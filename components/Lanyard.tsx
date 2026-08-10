@@ -51,8 +51,12 @@ export default function Lanyard({ frontImage, backImage, onActivate }: Props) {
       <Canvas
         camera={{ position: [0, 0, mobile ? 20 : 17], fov: mobile ? 25 : 24 }}
         dpr={[1, mobile ? 1.25 : 1.7]}
-        gl={{ alpha: true, antialias: !mobile }}
-        onCreated={({ gl }) => gl.setClearColor(new THREE.Color(0x000000), 0)}
+        flat
+        gl={{ alpha: true, antialias: !mobile, toneMapping: THREE.NoToneMapping }}
+        onCreated={({ gl }) => {
+          gl.outputColorSpace = THREE.SRGBColorSpace;
+          gl.setClearColor(new THREE.Color(0x000000), 0);
+        }}
       >
         <ambientLight intensity={Math.PI} />
         <Physics gravity={[0, -38, 0]} timeStep={mobile ? 1 / 30 : 1 / 60}>
@@ -64,7 +68,7 @@ export default function Lanyard({ frontImage, backImage, onActivate }: Props) {
           <Lightformer intensity={7} color="#d16a50" position={[-10, 0, 14]} rotation={[0, Math.PI / 2, Math.PI / 3]} scale={[100, 10, 1]} />
         </Environment>
       </Canvas>
-      <p className="lanyard-hint">轻拉吊牌 · 查看项目 ↓</p>
+      <p className="lanyard-hint"><b>拖动吊牌</b><span>松手直达项目 ↓</span></p>
     </div>
   );
 }
@@ -154,9 +158,9 @@ function Band({ mobile, frontImage, backImage, onActivate }: BandProps) {
   const [hovered, setHovered] = useState(false);
   const segmentProps = { canSleep: true, colliders: false as const, angularDamping: 4, linearDamping: 4 };
 
-  useRopeJoint(fixed, joint1, [[0, 0, 0], [0, 0, 0], .48]);
-  useRopeJoint(joint1, joint2, [[0, 0, 0], [0, 0, 0], .48]);
-  useRopeJoint(joint2, joint3, [[0, 0, 0], [0, 0, 0], .48]);
+  useRopeJoint(fixed, joint1, [[0, 0, 0], [0, 0, 0], .42]);
+  useRopeJoint(joint1, joint2, [[0, 0, 0], [0, 0, 0], .42]);
+  useRopeJoint(joint2, joint3, [[0, 0, 0], [0, 0, 0], .42]);
   useSphericalJoint(joint3, card, [[0, 0, 0], [0, 1.5, 0]]);
 
   useEffect(() => {
@@ -199,7 +203,7 @@ function Band({ mobile, frontImage, backImage, onActivate }: BandProps) {
 
   return (
     <>
-      <group position={[0, 3.65, 0]}>
+      <group position={[0, 3.25, 0]}>
         <RigidBody ref={fixed} {...segmentProps} type="fixed" />
         <RigidBody position={[.3, 0, 0]} ref={joint1} {...segmentProps}><BallCollider args={[.1]} /></RigidBody>
         <RigidBody position={[.6, 0, 0]} ref={joint2} {...segmentProps}><BallCollider args={[.1]} /></RigidBody>
@@ -207,8 +211,8 @@ function Band({ mobile, frontImage, backImage, onActivate }: BandProps) {
         <RigidBody position={[1.2, 0, 0]} ref={card} {...segmentProps} type={dragged ? "kinematicPosition" : "dynamic"}>
           <CuboidCollider args={[1.16, 1.65, .02]} />
           <group
-            scale={3.95}
-            position={[0, -1.68, -.05]}
+            scale={mobile ? 3.8 : 4.45}
+            position={[0, -1.55, -.05]}
             onPointerOver={() => setHovered(true)}
             onPointerOut={() => setHovered(false)}
             onPointerUp={(event) => {
@@ -224,7 +228,7 @@ function Band({ mobile, frontImage, backImage, onActivate }: BandProps) {
             }}
           >
             <mesh geometry={gltf.nodes.card.geometry}>
-              <meshPhysicalMaterial map={cardMap} clearcoat={mobile ? 0 : 1} clearcoatRoughness={.15} roughness={.9} metalness={.72} />
+              <meshBasicMaterial map={cardMap} toneMapped={false} />
             </mesh>
             <mesh geometry={gltf.nodes.clip.geometry} material={gltf.materials.metal} />
             <mesh geometry={gltf.nodes.clamp.geometry} material={gltf.materials.metal} />

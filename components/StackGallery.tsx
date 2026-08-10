@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useMotionValue, useTransform } from "motion/react";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import MediaLightbox, { type LightboxItem } from "./MediaLightbox";
 import "./StackGallery.css";
 
@@ -52,7 +52,15 @@ function StackCard({ item, depth, total, isTop, onSendBack, onOpen }: {
   const y = useMotionValue(0);
   const rotateX = useTransform(y, [-120, 120], [10, -10]);
   const rotateY = useTransform(x, [-120, 120], [-10, 10]);
+  const draggedRef = useRef(false);
   const layer = total - depth - 1;
+
+  const resetDrag = () => {
+    x.stop();
+    y.stop();
+    x.set(0);
+    y.set(0);
+  };
 
   return (
     <motion.article
@@ -61,13 +69,27 @@ function StackCard({ item, depth, total, isTop, onSendBack, onOpen }: {
       drag={isTop}
       dragConstraints={{ top: 0, right: 0, bottom: 0, left: 0 }}
       dragElastic={.65}
-      onDragEnd={(_, info) => {
-        if (Math.abs(info.offset.x) > 70 || Math.abs(info.offset.y) > 70) onSendBack();
-        else { x.set(0); y.set(0); }
+      dragMomentum={false}
+      onDragStart={() => {
+        draggedRef.current = true;
+        document.body.classList.add("stack-dragging");
       }}
+      onDragEnd={(_, info) => {
+        const shouldTurn = Math.abs(info.offset.x) > 70 || Math.abs(info.offset.y) > 70;
+        resetDrag();
+        document.body.classList.remove("stack-dragging");
+        if (shouldTurn) onSendBack();
+        window.setTimeout(() => { draggedRef.current = false; }, 80);
+      }}
+      onPointerCancel={() => { resetDrag(); document.body.classList.remove("stack-dragging"); }}
+      onLostPointerCapture={() => { resetDrag(); document.body.classList.remove("stack-dragging"); }}
       animate={{ rotateZ: (layer - 2) * 1.7, scale: 1 - layer * .025, y: layer * -4 }}
       transition={{ type: "spring", stiffness: 250, damping: 22 }}
-      onClick={() => isTop ? onOpen() : onSendBack()}
+      onClick={() => {
+        if (draggedRef.current) return;
+        if (isTop) onOpen();
+        else onSendBack();
+      }}
       tabIndex={isTop ? 0 : -1}
       onKeyDown={(event) => {
         if (!isTop) return;

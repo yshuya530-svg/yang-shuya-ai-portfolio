@@ -8,7 +8,7 @@ import DriftWall from "@/components/DriftWall";
 import FlowingMenu from "@/components/FlowingMenu";
 import Lanyard from "@/components/Lanyard";
 import LineSidebar from "@/components/LineSidebar";
-import SplashCursor from "@/components/SplashCursor";
+import SplashCursor from "@/components/SplashCursor.jsx";
 import StackGallery from "@/components/StackGallery";
 import StrokeText from "@/components/StrokeText";
 
@@ -85,6 +85,19 @@ const ecomFacts = [
   { title: "技术", detail: "React · TypeScript · FastAPI · pandas · LLM API" },
 ];
 
+const agentScopeItems = [
+  { title: "智能体设计", detail: "角色设定、任务边界、Prompt 结构、回复规范" },
+  { title: "前端体验", detail: "信息面板、侧边栏、交互组件和用户路径优化" },
+  { title: "持续迭代", detail: "观察对话反馈，调整 Prompt 和长对话稳定性" },
+];
+
+const directoryItems = [
+  { index: "01", title: "项目", detail: "EcomLens AI、智能体设计、内容增长", href: "#work" },
+  { index: "02", title: "研究", detail: "电商购买意图识别与转化预测", href: "#research" },
+  { index: "03", title: "实习", detail: "玉林新世纪、微视河南", href: "#experience" },
+  { index: "04", title: "关于我", detail: "能力背景与联系方式", href: "#about" },
+];
+
 const contactItems = [
   { label: "EMAIL", value: "15669517568@163.com", href: "mailto:15669517568@163.com" },
   { label: "PHONE", value: "156 6951 7568", href: "tel:15669517568" },
@@ -106,7 +119,7 @@ export default function Home() {
 
   return (
     <main id="top">
-      <SplashCursor />
+      <SplashCursor DYE_RESOLUTION={1024} SPLAT_RADIUS={0.16} SPLAT_FORCE={5200} />
       <header className="site-header">
         <a className="wordmark" href="#top"><strong>Shay</strong><span>PORTFOLIO / 2026</span></a>
         <nav aria-label="主导航"><a href="#work">项目</a><a href="#research">研究</a><a href="#experience">实习</a><a className="nav-cta" href="#contact">联系我 ↗</a></nav>
@@ -121,7 +134,7 @@ export default function Home() {
             <StrokeText className="hero-stroke hero-stroke-three" text="可核验的 AI 应用。" delay={.27} />
           </h1>
           <p className="hero-summary">我是 Shay / 杨舒雅。我关注用户和商家实际遇到的问题，完成需求梳理、AI 工作流、前端界面和演示交付。</p>
-          <div className="hero-actions"><a className="button button-secondary" href="#contact">联系 Shay ↗</a><span className="lanyard-action-copy">右侧轻拉吊牌，直接进入项目 ↓</span></div>
+          <div className="hero-actions"><a className="button button-secondary" href="#contact">联系 Shay ↗</a><span className="lanyard-action-copy"><b>右侧拖动吊牌</b>松手直接进入项目 ↓</span></div>
           <div className="hero-roles"><span>需求理解</span><span>AI 应用</span><span>前端 UI</span><span>交付表达</span></div>
         </div>
         <div className="hero-lanyard" data-reveal>
@@ -131,10 +144,19 @@ export default function Home() {
 
       <div className="ticker" aria-hidden="true"><div>BUSINESS NEEDS <i>✦</i> AI APPLICATION <i>✦</i> FRONTEND UI <i>✦</i> DELIVERY <i>✦</i> BUSINESS NEEDS <i>✦</i> AI APPLICATION <i>✦</i></div></div>
 
-      <section className="positioning section-shell" data-reveal>
-        <span className="section-index">00 / HOW I WORK</span>
-        <h2>先弄清楚用户怎么用、商家想改善什么，<br />再决定 AI 放在哪一步。</h2>
-        <div className="positioning-grid"><p>我的工作从真实需求和使用场景开始：整理输入、设计处理流程、完成界面，再用证据和结果检查方案是否有效。</p><strong>业务需求 → 工作流 → 界面 → 验证</strong></div>
+      <section id="directory" className="directory section-shell" data-reveal>
+        <div className="directory-heading">
+          <span className="section-index">00 / CONTENTS · 目录</span>
+          <h2>先看项目，<br />再看研究和实习。</h2>
+          <p>从产品与 AI 应用交付，到数据研究和真实内容现场。点击目录直接进入对应章节。</p>
+        </div>
+        <nav className="directory-list" aria-label="作品集目录">
+          {directoryItems.map((item) => (
+            <a href={item.href} key={item.index}>
+              <span>{item.index}</span><strong>{item.title}</strong><p>{item.detail}</p><i>↓</i>
+            </a>
+          ))}
+        </nav>
       </section>
 
       <section id="work" className="work">
@@ -153,14 +175,14 @@ export default function Home() {
 
         <div className="section-shell project-divider project-divider-spaced" data-reveal><span>PROJECT 02</span><strong>AI 智能体设计与前端体验</strong><p>角色系统、交互体验与持续迭代</p></div>
 
-        <article className="agent-case section-shell" data-reveal>
-          <div className="agent-copy"><div className="case-kicker"><span>02 / AI AGENT + FRONTEND UX</span><span>HTML · CSS · JS · PROMPT</span></div><h3>设计两个垂直场景智能体，并把平台交互体验一起做完整。</h3><p className="case-lead">我负责角色设定、任务边界、Prompt 结构和回复规范，也独立完成信息面板、侧边栏和交互组件的前端优化。根据真实对话反馈持续调整 Prompt 逻辑，提升长对话中的稳定性。</p><div className="agent-outcomes"><div><strong>2</strong><span>垂直场景智能体</span></div><div><strong>10万+</strong><span>真实互动</span></div><div><strong>1000+</strong><span>原平台 + 内容账号累计关注</span></div><div><strong>1万+</strong><span>获赞与收藏</span></div></div><div className="project-scope"><div><b>智能体设计</b><p>角色设定、任务边界、Prompt 结构、回复规范</p></div><div><b>前端体验</b><p>信息面板、侧边栏、交互组件和用户路径优化</p></div><div><b>持续迭代</b><p>观察对话反馈，调整 Prompt 和长对话稳定性</p></div></div><p className="simulation-note">下方是部分前端实现证据。仿手机只是其中一个组件；其中转账金额和消息内容均为界面模拟。</p></div>
+        <article id="agent-project" className="agent-case section-shell" data-reveal>
+          <div className="agent-copy"><div className="case-kicker"><span>02 / AI AGENT + FRONTEND UX</span><span>HTML · CSS · JS · PROMPT</span></div><h3>设计两个垂直场景智能体，并把平台交互体验一起做完整。</h3><p className="case-lead">我负责角色设定、任务边界、Prompt 结构和回复规范，也独立完成信息面板、侧边栏和交互组件的前端优化。根据真实对话反馈持续调整 Prompt 逻辑，提升长对话中的稳定性。</p><div className="agent-outcomes"><div><strong>2</strong><span>垂直场景智能体</span></div><div><strong>10万+</strong><span>真实互动</span></div><div><strong>1000+</strong><span>原平台 + 内容账号累计关注</span></div><div><strong>1万+</strong><span>获赞与收藏</span></div></div><FlowingMenu items={agentScopeItems} /><p className="simulation-note">下方是部分前端实现证据。仿手机只是其中一个组件；其中转账金额和消息内容均为界面模拟。</p></div>
           <div className="agent-stage"><StackGallery items={agentShots} /></div>
         </article>
 
         <div className="section-shell project-divider project-divider-spaced" data-reveal><span>PROJECT 03</span><strong>内容教程与增长实验</strong><p>公开反馈、账号增长与数据复盘</p></div>
 
-        <div className="content-cases section-shell" data-reveal>
+        <div id="content-project" className="content-cases section-shell" data-reveal>
           <article className="content-card content-card-blue"><span className="card-label">产品衍生内容 / 03A</span><h3>把界面改造过程整理成用户能复用的教程。</h3><p>公开分享前端美化过程，用收藏和评论反馈检查教程是否清楚、是否真正帮用户完成操作。</p><div className="content-metrics"><div><strong>1.1万</strong><span>浏览</span></div><div><strong>1961</strong><span>点赞</span></div><div><strong>1083</strong><span>收藏</span></div></div><AccordionGallery items={agentXhsShots} tone="blue" /></article>
           <article className="content-card content-card-coral"><span className="card-label">独立增长实验 / 03B</span><h3>围绕连续选题和数据复盘，完成从 0 到 1800+ 粉丝。</h3><p>观察曝光、互动、主页访问和涨粉曲线，再调整下一轮主题与内容结构。</p><div className="content-metrics"><div><strong>1806</strong><span>总粉丝</span></div><div><strong>5.0万</strong><span>获赞与收藏</span></div><div><strong>93.7%</strong><span>活跃粉丝占比</span></div></div><AccordionGallery items={growthShots} tone="orange" /></article>
         </div>
@@ -179,7 +201,7 @@ export default function Home() {
         <article className="experience-case experience-case-alt" data-reveal><div className="experience-copy"><span>2025 / MEDIA DELIVERY</span><h3>微视河南文化传媒中心</h3><p>参与公开内容采编、平台风格适配与多渠道分发。作者署名、阅读量和转载页面构成可核验的工作记录。</p><div className="experience-tags"><span>内容采编</span><span>平台适配</span><span>多渠道分发</span><span>公开传播</span></div></div><BounceCards items={weishiShots} /></article>
       </section>
 
-      <section className="about section-shell" data-reveal>
+      <section id="about" className="about section-shell" data-reveal>
         <figure className="about-photo"><div><img src="/assets/profile/profile-01.jpg" alt="Shay 的生活照" /></div><figcaption>OFF DUTY / STILL CURIOUS</figcaption></figure>
         <div className="about-copy"><span className="section-index">04 / ABOUT SHAY</span><h2>电子商务背景，<br />前端与 AI 应用实践。</h2><p>我习惯先理解业务、用户和交付目标，再把方案做成清楚的界面与可演示产品。正在寻找 FDE、AI 应用交付或偏产品的前端机会。</p><div className="skill-cloud"><span>React</span><span>TypeScript</span><span>Python</span><span>FastAPI</span><span>Prompt Design</span><span>UI Motion</span><span>Content Ops</span></div></div>
       </section>
