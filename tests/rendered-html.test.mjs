@@ -38,7 +38,9 @@ test("keeps all approved portfolio assets and public boundaries", async () => {
   ]);
 
   const mediaFiles = assetFiles.filter((file) => /\.(?:jpg|png|mp4)$/i.test(file));
+  const referencedAssets = new Set(page.match(/\/assets\/[^"]+/g) ?? []);
   assert.equal(mediaFiles.length, 43);
+  assert.equal(referencedAssets.size, 43);
   assert.match(page, /前端虚拟模拟/);
   assert.match(page, /lxyg0228/);
   assert.match(page, /github\.com\/yshuya530-svg\/EcomLens-AI/);

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import DepthCarousel from "@/components/DepthCarousel";
 
 type GalleryItem = {
   src: string;
@@ -75,7 +76,7 @@ const workflow = [
   ["05", "报告交付", "对照、版本与 Excel 导出"],
 ];
 
-function EvidenceGallery({ items, compact = false }: { items: GalleryItem[]; compact?: boolean }) {
+function EvidenceGallery({ items, layout = "mixed" }: { items: GalleryItem[]; layout?: "landscape" | "portrait" | "mixed" }) {
   const [active, setActive] = useState<number | null>(null);
 
   useEffect(() => {
@@ -95,7 +96,7 @@ function EvidenceGallery({ items, compact = false }: { items: GalleryItem[]; com
 
   return (
     <>
-      <div className={`evidence-grid ${compact ? "evidence-grid-compact" : ""}`}>
+      <div className={`evidence-grid evidence-grid-${layout}`}>
         {items.map((item, index) => (
           <button className="evidence-card" type="button" key={`${item.src}-${index}`} onClick={() => setActive(index)}>
             <img className={item.sensitive ? "privacy-soft" : ""} src={item.src} alt={item.alt} loading="lazy" />
@@ -163,9 +164,9 @@ export default function Home() {
         <div className="hero-noise" aria-hidden="true" />
         <div className="hero-copy" data-reveal>
           <p className="eyebrow"><i /> FDE · AI 应用交付 · 前端体验</p>
-          <h1>把复杂问题，<br /><em>做成能用、</em><br /><span>好用、能讲清</span>的<br />AI 应用。</h1>
+          <h1>把 AI 做进<br /><em>真实业务场景。</em></h1>
           <div className="hero-intro">
-            <p>你好，我是 <b>Shay / 杨舒雅</b>。我喜欢把业务理解、AI 能力、数据证据和精细的界面体验串成一条完整交付路径。</p>
+            <p>你好，我是 <b>Shay / 杨舒雅</b>。我做 AI 应用交付和前端体验：理解用户与商家的实际需求，再把方案做成能演示、能使用、能核验的产品。</p>
             <div className="hero-actions">
               <a className="button button-primary" href="#work">查看作品 <span>↓</span></a>
               <a className="button button-secondary" href="#contact">联系 Shay <span>↗</span></a>
@@ -173,9 +174,8 @@ export default function Home() {
           </div>
         </div>
         <div className="hero-portrait" data-reveal>
-          <figure className="portrait-main"><img src="/assets/profile/profile-02.jpg" alt="Shay 手持相机的生活照" /><figcaption>SHAY / DESIGNING WITH EVIDENCE</figcaption></figure>
-          <figure className="portrait-secondary"><img src="/assets/profile/profile-01.jpg" alt="Shay 的餐厅生活照" /></figure>
-          <div className="portrait-sticker"><span>01</span><b>产品感</b><b>设计感</b><b>交付感</b></div>
+          <figure className="portrait-main"><img src="/assets/profile/profile-02.jpg" alt="Shay 手持相机的生活照" /><figcaption>SHAY / AI APPLICATION DELIVERY & FRONTEND UI</figcaption></figure>
+          <div className="portrait-sticker"><span>01</span><b>需求理解</b><b>界面实现</b><b>项目交付</b></div>
         </div>
         <div className="hero-meta">
           <span>BASED IN CHINA</span><span>AVAILABLE FOR FULL-TIME</span><span>SCROLL TO EXPLORE ↓</span>
@@ -186,14 +186,15 @@ export default function Home() {
 
       <section className="positioning section-shell" data-reveal>
         <span className="section-index">00 / POSITIONING</span>
-        <h2>我不把 AI 当作孤立功能。<br />我关心它怎样进入真实工作流，<br /><em>被人理解、使用和验证。</em></h2>
+        <h2>让 AI 进入真实业务需求和使用场景，<br /><em>解决用户体验与商家运营问题。</em></h2>
+        <p className="positioning-copy">我会先弄清楚谁在使用、遇到什么问题、业务希望改变什么，再决定 AI 放在哪一步、界面怎样呈现、结果怎样核验。</p>
         <div className="positioning-note"><span>MY WORKING FORMULA</span><strong>业务理解 × AI 应用 × 前端体验 × 内容表达</strong></div>
       </section>
 
       <section className="work" id="work">
         <div className="section-shell section-heading" data-reveal>
-          <div><span className="section-index">01 / SELECTED WORK</span><h2>项目不是功能清单，<br />而是问题如何被解决。</h2></div>
-          <p>每个案例都回答四件事：为什么做、怎样拆、如何实现、用什么证据验证。</p>
+          <div><span className="section-index">01 / SELECTED WORK</span><h2>三个项目，展示我怎样理解需求、搭建界面并完成交付。</h2></div>
+          <p>每个案例都写清楚实际问题、我的工作、实现过程和可核验结果。</p>
         </div>
 
         <article className="case case-ecom section-shell" data-reveal>
@@ -207,7 +208,7 @@ export default function Home() {
           <div className="case-copy">
             <div className="case-kicker"><span>AI 经营洞察工作台</span><span>REACT + FASTAPI</span></div>
             <h3>让每一条经营结论，都能回到评论证据。</h3>
-            <p className="case-lead">把评论文件接入、清洗、AI 分类、痛点排序、行动建议、Listing 优化和报告导出串成闭环。生成不是终点，核验与运营执行才是。</p>
+            <p className="case-lead">系统接入评论文件，完成清洗、AI 分类、痛点排序、行动建议、Listing 优化和报告导出。每条经营结论保留原文证据，运营人员可以核验后再执行。</p>
             <div className="metric-row"><div><strong>200</strong><span>演示评论样本</span></div><div><strong>34</strong><span>高优先级痛点</span></div><div><strong>7</strong><span>待执行建议</span></div></div>
             <dl className="fact-list"><div><dt>我的角色</dt><dd>产品梳理、前端 UI、AI 工作流与演示交付</dd></div><div><dt>核心原则</dt><dd>保留原文证据，不伪造评分，不自动发布</dd></div><div><dt>技术栈</dt><dd>React · TypeScript · FastAPI · pandas · LLM API</dd></div></dl>
             <a className="text-link" href="https://github.com/yshuya530-svg/EcomLens-AI" target="_blank" rel="noreferrer">查看 GitHub <span>↗</span></a>
@@ -221,7 +222,7 @@ export default function Home() {
 
         <div className="gallery-block section-shell" data-reveal>
           <div className="gallery-heading"><div><span>ECOMLENS / PRODUCT EVIDENCE</span><h3>从概览到报告的 5 个关键界面</h3></div><p>点击任意画面逐张查看，使用键盘方向键也可以切换。</p></div>
-          <EvidenceGallery items={ecomShots} compact />
+          <EvidenceGallery items={ecomShots} layout="landscape" />
         </div>
 
         <article className="case case-agent section-shell" data-reveal>
@@ -232,7 +233,9 @@ export default function Home() {
             <div className="notice"><b>演示说明</b><p>画面中的转账金额、聊天内容与角色互动均为前端虚拟模拟，不代表真实交易或真实用户数据。</p></div>
             <ul className="feature-list"><li><span>01</span>手机框架、状态栏与侧边控件</li><li><span>02</span>消息 / 语音 / 撤回 / 虚拟转账组件</li><li><span>03</span>正则过滤与稳定交互渲染</li><li><span>04</span>玻璃拟态播放器与视觉主题</li></ul>
           </div>
-          <div className="agent-stage"><div className="agent-orbit" aria-hidden="true" /><EvidenceGallery items={agentShots} compact /></div>
+          <div className="agent-stage">
+            <DepthCarousel items={agentShots.map((item) => ({ image: item.src, alt: item.alt, caption: item.caption }))} />
+          </div>
         </article>
 
         <div className="content-cases section-shell" data-reveal>
@@ -240,13 +243,13 @@ export default function Home() {
             <div className="content-number">03A</div><span className="card-label">产品衍生内容</span><h3>把一次界面改造，变成用户愿意收藏和复用的教程。</h3>
             <p>围绕虚拟手机的界面美化与交互实现做内容拆解，用评论区反馈验证教程是否真正解决问题。</p>
             <div className="content-metrics"><div><strong>1.1万</strong><span>单篇浏览</span></div><div><strong>1961</strong><span>点赞</span></div><div><strong>1083</strong><span>收藏</span></div></div>
-            <EvidenceGallery items={agentXhsShots} compact />
+            <EvidenceGallery items={agentXhsShots} layout="portrait" />
           </article>
           <article className="content-card content-card-coral">
             <div className="content-number">03B</div><span className="card-label">独立增长实验</span><h3>从 0 到 1800+ 粉丝，用系列选题和数据复盘跑出增长。</h3>
             <p>把内容拆成连续主题，观察曝光、互动、主页访问和涨粉曲线，让“灵感”变成可复盘的内容系统。</p>
             <div className="content-metrics"><div><strong>1806</strong><span>总粉丝</span></div><div><strong>5.0万</strong><span>获赞与收藏</span></div><div><strong>93.7%</strong><span>活跃粉丝占比</span></div></div>
-            <EvidenceGallery items={growthShots} compact />
+            <EvidenceGallery items={growthShots} layout="portrait" />
           </article>
         </div>
       </section>
@@ -273,11 +276,11 @@ export default function Home() {
         <div className="section-heading" data-reveal><div><span className="section-index">03 / FIELD NOTES</span><h2>真实现场、内容证据<br />与协作交付。</h2></div><p>公开照片与发布记录先全部入库；涉及学生清晰人像的画面已做柔化展示。</p></div>
         <article className="experience-case" data-reveal>
           <div className="experience-copy"><span>2026 / SCHOOL COMMUNICATION</span><h3>玉林新世纪高级中学</h3><p>参与校园活动内容策划、现场采集、短视频分镜与公众号编辑。从活动发生，到内容成稿，再到公开发布，保留完整交付链路。</p><div className="experience-tags"><span>活动策划</span><span>分镜脚本</span><span>图文编辑</span><span>现场协作</span></div></div>
-          <EvidenceGallery items={schoolShots} compact />
+          <EvidenceGallery items={schoolShots} layout="mixed" />
         </article>
         <article className="experience-case experience-case-alt" data-reveal>
           <div className="experience-copy"><span>2025 / MEDIA DELIVERY</span><h3>微视河南文化传媒中心</h3><p>参与公开内容采编、平台适配与多渠道分发。署名、阅读量和转载页面构成可核验的工作证据。</p><div className="experience-tags"><span>内容采编</span><span>多平台分发</span><span>风格适配</span><span>公开传播</span></div></div>
-          <EvidenceGallery items={weishiShots} compact />
+          <EvidenceGallery items={weishiShots} layout="portrait" />
         </article>
       </section>
 
