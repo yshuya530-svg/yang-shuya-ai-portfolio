@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import { headers } from "next/headers";
 import "./globals.css";
 
-const title = "杨舒雅｜FDE 与 AI 应用交付作品集";
-const description = "杨舒雅的 AI 应用交付与前端体验作品集：业务理解、AI 应用、界面设计与内容表达。";
+const title = "Shay｜FDE、AI 应用交付与前端 UI 作品集";
+const description = "Shay（杨舒雅）的作品集：EcomLens AI、虚拟手机交互、内容增长实验、数据研究与真实交付证据。";
 
 export async function generateMetadata(): Promise<Metadata> {
   const requestHeaders = await headers();
   const host = requestHeaders.get("x-forwarded-host") ?? requestHeaders.get("host") ?? "localhost:3000";
   const protocol = requestHeaders.get("x-forwarded-proto") ?? (host.startsWith("localhost") ? "http" : "https");
-  const ogImage = `${protocol}://${host}/og.png`;
+  const ogImage = `${protocol}://${host}/og-shay.png`;
 
   return {
     title,
