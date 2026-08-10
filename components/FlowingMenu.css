@@ -1,0 +1,22 @@
+.flowing-menu-wrap { width: 100%; overflow: hidden; border-block: 1px solid var(--ink); }
+.flowing-menu { display: flex; flex-direction: column; }
+.flowing-menu__item { position: relative; min-height: 88px; overflow: hidden; border-bottom: 1px solid var(--line); outline: none; }
+.flowing-menu__item:last-child { border-bottom: 0; }
+.flowing-menu__base { display: grid; grid-template-columns: 48px 116px 1fr auto; align-items: center; gap: 14px; min-height: 88px; padding: 0 10px; }
+.flowing-menu__base > span { color: var(--clay); font: 800 11px/1 var(--mono); letter-spacing: .12em; }
+.flowing-menu__base b { font-size: 13px; }
+.flowing-menu__base p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.55; }
+.flowing-menu__base i { font-style: normal; }
+.flowing-marquee { position: absolute; inset: 0; overflow: hidden; pointer-events: none; color: var(--paper-2); background: var(--ink); transform: translateY(101%); }
+.flowing-marquee__inner { display: flex; align-items: center; width: max-content; height: 100%; will-change: transform; }
+.flowing-marquee__part { display: flex; flex: none; align-items: center; gap: 22px; padding-right: 22px; white-space: nowrap; }
+.flowing-marquee__part strong { font: 400 clamp(28px,3vw,48px)/1 "Instrument Serif", serif; }
+.flowing-marquee__part span { color: #c9c1b5; font-size: 12px; }
+.flowing-marquee__part em { color: var(--clay); font-style: normal; }
+
+@media (max-width: 760px) {
+  .flowing-menu__item, .flowing-menu__base { min-height: 72px; }
+  .flowing-menu__base { grid-template-columns: 28px 86px 1fr; padding: 0 4px; }
+  .flowing-menu__base i { display: none; }
+  .flowing-menu__base p { font-size: 11px; }
+}

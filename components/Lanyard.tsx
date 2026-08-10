@@ -19,6 +19,7 @@ import "./Lanyard.css";
 type Props = {
   frontImage: string;
   backImage?: string;
+  onActivate?: () => void;
 };
 
 const BLANK_PIXEL =
@@ -26,7 +27,7 @@ const BLANK_PIXEL =
 const FRONT_UV_RECT = { x: 0, y: 0, w: 0.5, h: 0.755 };
 const BACK_UV_RECT = { x: 0.5, y: 0, w: 0.5, h: 0.757 };
 
-export default function Lanyard({ frontImage, backImage }: Props) {
+export default function Lanyard({ frontImage, backImage, onActivate }: Props) {
   const [mobile, setMobile] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -55,15 +56,15 @@ export default function Lanyard({ frontImage, backImage }: Props) {
       >
         <ambientLight intensity={Math.PI} />
         <Physics gravity={[0, -38, 0]} timeStep={mobile ? 1 / 30 : 1 / 60}>
-          <Band mobile={mobile} frontImage={frontImage} backImage={backImage} />
+          <Band mobile={mobile} frontImage={frontImage} backImage={backImage} onActivate={onActivate} />
         </Physics>
         <Environment blur={0.78}>
           <Lightformer intensity={2.5} color="white" position={[0, -1, 5]} rotation={[0, 0, Math.PI / 3]} scale={[100, .1, 1]} />
-          <Lightformer intensity={3} color="#fff4df" position={[-1, -1, 1]} rotation={[0, 0, Math.PI / 3]} scale={[100, .1, 1]} />
-          <Lightformer intensity={8} color="#dfe878" position={[-10, 0, 14]} rotation={[0, Math.PI / 2, Math.PI / 3]} scale={[100, 10, 1]} />
+          <Lightformer intensity={3} color="#eee5da" position={[-1, -1, 1]} rotation={[0, 0, Math.PI / 3]} scale={[100, .1, 1]} />
+          <Lightformer intensity={7} color="#d16a50" position={[-10, 0, 14]} rotation={[0, Math.PI / 2, Math.PI / 3]} scale={[100, 10, 1]} />
         </Environment>
       </Canvas>
-      <p className="lanyard-hint">拖动吊牌试试 · 原图完整保留</p>
+      <p className="lanyard-hint">轻拉吊牌 · 查看项目 ↓</p>
     </div>
   );
 }
@@ -72,9 +73,10 @@ type BandProps = {
   mobile: boolean;
   frontImage: string;
   backImage?: string;
+  onActivate?: () => void;
 };
 
-function Band({ mobile, frontImage, backImage }: BandProps) {
+function Band({ mobile, frontImage, backImage, onActivate }: BandProps) {
   const band = useRef<THREE.Mesh>(null);
   const fixed = useRef<any>(null);
   const joint1 = useRef<any>(null);
@@ -111,13 +113,13 @@ function Band({ mobile, frontImage, backImage }: BandProps) {
   const cardMap = useMemo(() => {
     const baseMap = gltf.materials.base.map as THREE.Texture;
     if (!frontImage && !backImage) return baseMap;
-    const baseImage = baseMap.image as CanvasImageSource & { width: number; height: number };
     const canvas = document.createElement("canvas");
-    canvas.width = baseImage.width;
-    canvas.height = baseImage.height;
+    canvas.width = (baseMap.image as { width: number }).width;
+    canvas.height = (baseMap.image as { height: number }).height;
     const context = canvas.getContext("2d");
     if (!context) return baseMap;
-    context.drawImage(baseImage, 0, 0, canvas.width, canvas.height);
+    context.fillStyle = "#eee8df";
+    context.fillRect(0, 0, canvas.width, canvas.height);
 
     const drawContained = (source: HTMLImageElement, rect: typeof FRONT_UV_RECT) => {
       const x = rect.x * canvas.width;
@@ -131,7 +133,7 @@ function Band({ mobile, frontImage, backImage }: BandProps) {
       context.beginPath();
       context.rect(x, y, width, height);
       context.clip();
-      context.fillStyle = "#f3eee5";
+      context.fillStyle = "#eee8df";
       context.fillRect(x, y, width, height);
       context.drawImage(source, x + (width - drawWidth) / 2, y + (height - drawHeight) / 2, drawWidth, drawHeight);
       context.restore();
@@ -152,9 +154,9 @@ function Band({ mobile, frontImage, backImage }: BandProps) {
   const [hovered, setHovered] = useState(false);
   const segmentProps = { canSleep: true, colliders: false as const, angularDamping: 4, linearDamping: 4 };
 
-  useRopeJoint(fixed, joint1, [[0, 0, 0], [0, 0, 0], 1]);
-  useRopeJoint(joint1, joint2, [[0, 0, 0], [0, 0, 0], 1]);
-  useRopeJoint(joint2, joint3, [[0, 0, 0], [0, 0, 0], 1]);
+  useRopeJoint(fixed, joint1, [[0, 0, 0], [0, 0, 0], .48]);
+  useRopeJoint(joint1, joint2, [[0, 0, 0], [0, 0, 0], .48]);
+  useRopeJoint(joint2, joint3, [[0, 0, 0], [0, 0, 0], .48]);
   useSphericalJoint(joint3, card, [[0, 0, 0], [0, 1.5, 0]]);
 
   useEffect(() => {
@@ -197,21 +199,23 @@ function Band({ mobile, frontImage, backImage }: BandProps) {
 
   return (
     <>
-      <group position={[0, 4, 0]}>
+      <group position={[0, 3.65, 0]}>
         <RigidBody ref={fixed} {...segmentProps} type="fixed" />
-        <RigidBody position={[.5, 0, 0]} ref={joint1} {...segmentProps}><BallCollider args={[.1]} /></RigidBody>
-        <RigidBody position={[1, 0, 0]} ref={joint2} {...segmentProps}><BallCollider args={[.1]} /></RigidBody>
-        <RigidBody position={[1.5, 0, 0]} ref={joint3} {...segmentProps}><BallCollider args={[.1]} /></RigidBody>
-        <RigidBody position={[2, 0, 0]} ref={card} {...segmentProps} type={dragged ? "kinematicPosition" : "dynamic"}>
-          <CuboidCollider args={[.8, 1.125, .01]} />
+        <RigidBody position={[.3, 0, 0]} ref={joint1} {...segmentProps}><BallCollider args={[.1]} /></RigidBody>
+        <RigidBody position={[.6, 0, 0]} ref={joint2} {...segmentProps}><BallCollider args={[.1]} /></RigidBody>
+        <RigidBody position={[.9, 0, 0]} ref={joint3} {...segmentProps}><BallCollider args={[.1]} /></RigidBody>
+        <RigidBody position={[1.2, 0, 0]} ref={card} {...segmentProps} type={dragged ? "kinematicPosition" : "dynamic"}>
+          <CuboidCollider args={[1.16, 1.65, .02]} />
           <group
-            scale={2.25}
-            position={[0, -1.2, -.05]}
+            scale={3.95}
+            position={[0, -1.68, -.05]}
             onPointerOver={() => setHovered(true)}
             onPointerOut={() => setHovered(false)}
             onPointerUp={(event) => {
               event.currentTarget.releasePointerCapture(event.pointerId);
+              const shouldActivate = Boolean(dragged);
               setDragged(false);
+              if (shouldActivate) window.setTimeout(() => onActivate?.(), 180);
             }}
             onPointerDown={(event) => {
               event.stopPropagation();

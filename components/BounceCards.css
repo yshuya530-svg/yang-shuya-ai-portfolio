@@ -1,0 +1,42 @@
+.bounce-cards {
+  width: 100%;
+  overflow: hidden;
+  color: var(--ink);
+  background: #d8d1c7;
+  border: 1px solid var(--ink);
+}
+.bounce-cards__stage { position: relative; height: 680px; overflow: hidden; }
+.bounce-card {
+  position: absolute;
+  top: 34px;
+  left: 50%;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  width: min(290px, 29vw);
+  height: 600px;
+  padding: 0;
+  overflow: hidden;
+  color: var(--ink);
+  background: var(--paper-2);
+  border: 1px solid var(--ink);
+  box-shadow: 0 18px 40px rgba(25,24,22,.19);
+  cursor: pointer;
+  transform: translateX(calc(-50% + var(--bounce-offset) * 92px)) rotate(calc(var(--bounce-offset) * 1.7deg)) scale(calc(1 - var(--bounce-distance) * .025));
+  transform-origin: 50% 100%;
+  transition: transform .52s cubic-bezier(.2,.8,.2,1), filter .4s ease, opacity .4s ease;
+}
+.bounce-card.is-active { transform: translateX(-50%) rotate(0) scale(1.045); filter: none; }
+.bounce-card:not(.is-active) { filter: saturate(.72) brightness(.92); }
+.bounce-card__image { display: grid; min-height: 0; place-items: center; padding: 6px; background: #ebe6dd; }
+.bounce-card__image img { display: block; max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; }
+.bounce-card__caption { display: grid; grid-template-columns: 31px 1fr; gap: 8px; min-height: 66px; padding: 12px; border-top: 1px solid var(--ink); text-align: left; font-size: 11px; line-height: 1.45; }
+.bounce-card__caption b { color: var(--clay); }
+.bounce-cards > p { margin: 0; padding: 14px 18px; border-top: 1px solid var(--ink); color: var(--muted); font-size: 10px; letter-spacing: .06em; }
+
+@media (max-width: 760px) {
+  .bounce-cards { overflow: visible; }
+  .bounce-cards__stage { height: 575px; overflow: hidden; }
+  .bounce-card { top: 26px; width: min(245px, 67vw); height: 505px; transform: translateX(calc(-50% + var(--bounce-offset) * 50px)) rotate(calc(var(--bounce-offset) * 1.5deg)) scale(calc(1 - var(--bounce-distance) * .035)); }
+  .bounce-card.is-active { transform: translateX(-50%) rotate(0) scale(1.025); }
+  .bounce-card__caption { min-height: 60px; font-size: 10px; }
+}

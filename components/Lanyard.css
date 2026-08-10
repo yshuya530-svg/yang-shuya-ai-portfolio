@@ -1,13 +1,11 @@
 .lanyard-wrapper {
   position: relative;
   width: 100%;
-  height: 650px;
-  min-height: 560px;
+  height: 690px;
+  min-height: 610px;
   overflow: hidden;
-  background:
-    radial-gradient(circle at 50% 42%, rgba(223, 232, 120, .34), transparent 34%),
-    linear-gradient(135deg, rgba(49, 88, 215, .10), transparent 54%);
-  border: 1px solid #191816;
+  background: transparent;
+  border: 0;
   isolation: isolate;
 }
 
@@ -21,13 +19,13 @@
 
 .lanyard-hint {
   position: absolute;
-  right: 16px;
-  bottom: 14px;
+  right: 10px;
+  bottom: 10px;
   z-index: 2;
   margin: 0;
-  padding: 8px 10px;
-  color: #fffdf8;
-  background: rgba(25, 24, 22, .82);
+  padding: 0;
+  color: #5d5851;
+  background: transparent;
   font-size: 9px;
   font-weight: 800;
   letter-spacing: .08em;
@@ -35,6 +33,6 @@
 }
 
 @media (max-width: 720px) {
-  .lanyard-wrapper { height: 520px; min-height: 500px; }
+  .lanyard-wrapper { height: 580px; min-height: 540px; }
   .lanyard-hint { right: 10px; bottom: 10px; }
 }
