@@ -3,7 +3,7 @@ import { headers } from "next/headers";
 import "./globals.css";
 
 const title = "Shay｜FDE、AI 应用交付与前端 UI 作品集";
-const description = "Shay（杨舒雅）的作品集：EcomLens AI、虚拟手机交互、内容增长实验、数据研究与真实交付证据。";
+const description = "Shay（杨舒雅）的作品集：EcomLens AI、AI 智能体与前端体验、内容增长实验、数据研究和真实交付证据。";
 
 export async function generateMetadata(): Promise<Metadata> {
   const requestHeaders = await headers();

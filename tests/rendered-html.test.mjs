@@ -22,9 +22,10 @@ test("server-renders Shay portfolio content", async () => {
   const html = await response.text();
   assert.match(html, /<strong>Shay<\/strong>/);
   assert.match(html, /ECOMLENS AI/);
-  assert.match(html, /虚拟手机/);
-  assert.match(html, /电商用户购买意图识别与转化预测研究/);
-  assert.match(html, /\/assets\/profile\/profile-02\.jpg/);
+  assert.match(html, /两个垂直场景智能体/);
+  assert.match(html, /原平台 \+ 内容账号累计关注/);
+  assert.match(html, /哪些购买前行为/);
+  assert.match(html, /\/assets\/profile\/profile-01\.jpg/);
   assert.match(html, /\/assets\/ecomlens\/ecomlens-demo\.mp4/);
   assert.doesNotMatch(html, /yang-shuya-resume\.pdf|保密项目/);
 });
@@ -39,13 +40,13 @@ test("keeps all approved portfolio assets and public boundaries", async () => {
 
   const mediaFiles = assetFiles.filter((file) => /\.(?:jpg|png|mp4)$/i.test(file));
   const referencedAssets = new Set(page.match(/\/assets\/[^"]+/g) ?? []);
-  assert.equal(mediaFiles.length, 43);
-  assert.equal(referencedAssets.size, 43);
-  assert.match(page, /前端虚拟模拟/);
+  assert.equal(mediaFiles.length, 44);
+  assert.equal(referencedAssets.size, 44);
+  assert.match(page, /界面模拟/);
   assert.match(page, /lxyg0228/);
   assert.match(page, /github\.com\/yshuya530-svg\/EcomLens-AI/);
   assert.doesNotMatch(page, /yang-shuya-resume\.pdf|保密项目/);
   assert.match(css, /prefers-reduced-motion:\s*reduce/);
-  assert.match(css, /privacy-soft/);
+  assert.doesNotMatch(page, /school-08\.jpg|sensitive|模糊|柔化/);
   assert.match(layout, /Shay｜FDE、AI 应用交付与前端 UI 作品集/);
 });

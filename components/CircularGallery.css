@@ -1,0 +1,43 @@
+.circular-gallery {
+  position: relative;
+  min-height: 760px;
+  overflow: hidden;
+  border: 1px solid var(--ink);
+  background: #1c2b33;
+  color: white;
+  touch-action: pan-y;
+}
+
+.circular-stage { position: relative; height: 680px; perspective: 1400px; }
+.circular-card {
+  --offset: 0;
+  position: absolute;
+  top: 46px;
+  left: 50%;
+  width: min(340px, 34vw);
+  padding: 0;
+  border: 1px solid rgba(255,255,255,.55);
+  background: #f4efe5;
+  color: var(--ink);
+  cursor: pointer;
+  transform: translateX(calc(-50% + var(--offset) * 235px)) translateZ(calc(var(--distance) * -145px)) rotateY(calc(var(--offset) * -16deg)) scale(calc(1 - var(--distance) * .07));
+  transition: transform .7s cubic-bezier(.2,.8,.2,1), opacity .55s ease, filter .55s ease;
+  z-index: calc(20 - var(--distance));
+  filter: saturate(calc(1 - var(--distance) * .18));
+}
+
+.circular-card.is-active { cursor: zoom-in; box-shadow: 0 28px 70px rgba(0,0,0,.42); }
+.circular-image { display: grid; place-items: center; height: 535px; padding: 12px; background: #ece7de; }
+.circular-image img { display: block; max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; }
+.circular-caption { display: grid; grid-template-columns: 38px 1fr; gap: 10px; min-height: 82px; padding: 13px; text-align: left; font-size: 13px; line-height: 1.45; }
+.circular-caption b { color: var(--orange); }
+.circular-controls { position: absolute; left: 50%; bottom: 22px; display: flex; align-items: center; gap: 20px; transform: translateX(-50%); font: 700 12px/1 var(--mono); letter-spacing: .12em; }
+.circular-controls button { width: 42px; height: 42px; border: 1px solid rgba(255,255,255,.5); border-radius: 50%; background: transparent; color: white; cursor: pointer; }
+
+@media (max-width: 760px) {
+  .circular-gallery { min-height: 620px; }
+  .circular-stage { height: 545px; }
+  .circular-card { top: 28px; width: 68vw; transform: translateX(calc(-50% + var(--offset) * 48vw)) translateZ(calc(var(--distance) * -150px)) rotateY(calc(var(--offset) * -12deg)) scale(calc(1 - var(--distance) * .1)); }
+  .circular-image { height: 420px; padding: 8px; }
+  .circular-caption { min-height: 70px; font-size: 11px; }
+}
