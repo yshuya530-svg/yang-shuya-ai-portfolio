@@ -1,8 +1,8 @@
 .lanyard-wrapper {
   position: relative;
   width: 100%;
-  height: 700px;
-  min-height: 620px;
+  height: 820px;
+  min-height: 760px;
   overflow: hidden;
   background: transparent;
   border: 0;
@@ -35,6 +35,6 @@
 .lanyard-hint span { margin-top: 3px; color: #d9d0c5; font-size: 9px; letter-spacing: .06em; }
 
 @media (max-width: 720px) {
-  .lanyard-wrapper { height: 590px; min-height: 550px; }
+  .lanyard-wrapper { height: 620px; min-height: 570px; }
   .lanyard-hint { right: 8px; bottom: 8px; }
 }

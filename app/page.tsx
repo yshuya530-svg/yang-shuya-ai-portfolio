@@ -8,7 +8,7 @@ import DriftWall from "@/components/DriftWall";
 import FlowingMenu from "@/components/FlowingMenu";
 import Lanyard from "@/components/Lanyard";
 import LineSidebar from "@/components/LineSidebar";
-import SplashCursor from "@/components/SplashCursor.jsx";
+import SplashCursor from "@/components/SplashCursor";
 import StackGallery from "@/components/StackGallery";
 import StrokeText from "@/components/StrokeText";
 
@@ -119,7 +119,7 @@ export default function Home() {
 
   return (
     <main id="top">
-      <SplashCursor DYE_RESOLUTION={1024} SPLAT_RADIUS={0.16} SPLAT_FORCE={5200} />
+      <SplashCursor />
       <header className="site-header">
         <a className="wordmark" href="#top"><strong>Shay</strong><span>PORTFOLIO / 2026</span></a>
         <nav aria-label="主导航"><a href="#work">项目</a><a href="#research">研究</a><a href="#experience">实习</a><a className="nav-cta" href="#contact">联系我 ↗</a></nav>
@@ -129,9 +129,9 @@ export default function Home() {
         <div className="hero-copy" data-reveal>
           <p className="eyebrow"><i /> FDE · AI 应用交付 · 前端体验</p>
           <h1>
-            <StrokeText className="hero-stroke hero-stroke-one" text="把真实业务需求，" delay={.05} />
-            <StrokeText className="hero-stroke hero-stroke-two" text="做成可用、" strokeColor="#c95d42" fillColor="#c95d42" delay={.16} />
-            <StrokeText className="hero-stroke hero-stroke-three" text="可核验的 AI 应用。" delay={.27} />
+            <StrokeText className="hero-stroke hero-stroke-one" text="把真实业务需求，" fontSize={112} trigger="loop" drawDuration={1.1} fillDelay={.08} stagger={.028} />
+            <StrokeText className="hero-stroke hero-stroke-two" text="做成可用、" strokeColor="#c95d42" fillColor="#c95d42" fontSize={112} trigger="loop" drawDuration={1.1} fillDelay={.08} stagger={.028} />
+            <StrokeText className="hero-stroke hero-stroke-three" text="可核验的 AI 应用。" fontSize={112} trigger="loop" drawDuration={1.1} fillDelay={.08} stagger={.028} />
           </h1>
           <p className="hero-summary">我是 Shay / 杨舒雅。我关注用户和商家实际遇到的问题，完成需求梳理、AI 工作流、前端界面和演示交付。</p>
           <div className="hero-actions"><a className="button button-secondary" href="#contact">联系 Shay ↗</a><span className="lanyard-action-copy"><b>右侧拖动吊牌</b>松手直接进入项目 ↓</span></div>

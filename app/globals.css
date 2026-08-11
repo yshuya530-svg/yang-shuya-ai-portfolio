@@ -197,8 +197,8 @@ main { width: 100%; overflow-x: clip; overflow-y: visible; }
 
 .experience { padding-block: 130px; }
 .experience .section-heading { padding-top: 0; border-top: 0; }
-.experience-case { display: grid; grid-template-columns: .36fr .64fr; gap: 50px; align-items: start; padding-block: 65px; border-top: 1px solid var(--ink); }
-.experience-case-alt { grid-template-columns: .32fr .68fr; }
+.experience-case { display: grid; grid-template-columns: minmax(240px, 310px) minmax(0, 1fr); gap: 28px; align-items: start; padding-block: 65px; border-top: 1px solid var(--ink); }
+.experience-case-alt { grid-template-columns: minmax(240px, 310px) minmax(0, 1fr); }
 .experience-copy { position: sticky; top: 110px; }
 .experience-copy h3 { margin-top: 18px; }
 .experience-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }

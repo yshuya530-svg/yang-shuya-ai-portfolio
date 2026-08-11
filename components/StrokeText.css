@@ -4,15 +4,17 @@
   line-height: 0;
 }
 
+.stroke-text--hover { cursor: pointer; }
+
 .stroke-text__svg {
   display: block;
   width: 100%;
-  height: auto;
+  height: var(--stroke-text-height, 160px);
   overflow: visible;
 }
 
-.stroke-text text {
+.stroke-text__stroke,
+.stroke-text__fill {
   font-family: "Noto Sans SC", "DM Sans", sans-serif;
   user-select: none;
 }
-

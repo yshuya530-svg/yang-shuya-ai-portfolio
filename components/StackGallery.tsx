@@ -33,7 +33,7 @@ export default function StackGallery({ items }: { items: StackItem[] }) {
             />
           );
         })}
-        <div className="stack-gallery__help"><span>拖动或点击翻下一张</span><b>STACK / {String(items.length).padStart(2, "0")}</b></div>
+        <div className="stack-gallery__help"><span>拖动切换 · 点击查看大图</span><b>STACK / {String(items.length).padStart(2, "0")}</b></div>
       </div>
       <MediaLightbox items={lightboxItems} active={lightbox} onChange={setLightbox} />
     </>
@@ -98,7 +98,7 @@ function StackCard({ item, depth, total, isTop, onSendBack, onOpen }: {
       }}
     >
       <div className="stack-card__media"><img src={item.image} alt={item.alt} draggable="false" /></div>
-      <div className="stack-card__caption"><span>{String(depth + 1).padStart(2, "0")}</span><p>{item.caption}</p><b>{isTop ? "查看大图 ↗" : ""}</b></div>
+      <div className="stack-card__caption"><span>{String(depth + 1).padStart(2, "0")}</span><p>{item.caption}</p><b>{isTop ? "点击放大 ↗" : ""}</b></div>
     </motion.article>
   );
 }

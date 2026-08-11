@@ -1,102 +1,114 @@
-.evidence-pager {
+.accordion-gallery {
   width: 100%;
+  padding: 14px 12px 10px;
   border-top: 1px solid var(--ink);
-  background: var(--paper);
   color: var(--ink);
-  outline: none;
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
 }
 
-.evidence-pager:focus-visible { box-shadow: inset 0 0 0 3px var(--lime); }
+.accordion-gallery__rail {
+  display: flex;
+  gap: 7px;
+  width: min(100%, 460px);
+  height: clamp(320px, 27vw, 390px);
+  margin-inline: auto;
+}
 
-.evidence-pager__toolbar {
+.accordion-gallery__panel {
+  position: relative;
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 16px;
-  min-height: 54px;
-  padding: 8px 12px;
-  border-bottom: 1px solid var(--ink);
-}
-
-.evidence-pager__toolbar > span {
-  font: 800 10px/1 var(--mono);
-  letter-spacing: .12em;
-}
-
-.evidence-pager__toolbar p {
-  overflow: hidden;
-  margin: 0;
-  font-size: 11px;
-  line-height: 1.45;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.evidence-pager__toolbar > div { display: flex; gap: 4px; }
-
-.evidence-pager__toolbar button {
-  display: grid;
-  width: 34px;
-  height: 34px;
+  flex: 0 1 54px;
+  grid-template-rows: minmax(0, 1fr);
+  min-width: 42px;
   padding: 0;
-  place-items: center;
+  overflow: hidden;
   color: inherit;
-  background: transparent;
+  background: #d8cfc1;
   border: 1px solid var(--ink);
   cursor: pointer;
+  transition: flex-basis .46s cubic-bezier(.22,.78,.18,1), background .3s ease;
 }
 
-.evidence-pager__toolbar button:hover { color: var(--paper); background: var(--ink); }
-
-.evidence-pager__viewport {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  background: #e8e0d4;
-}
-
-.evidence-pager__image {
-  display: block;
-  width: 100%;
-  padding: 0;
-  color: inherit;
-  background: transparent;
-  border: 0;
+.accordion-gallery__panel.is-active {
+  flex-basis: min(72%, 280px);
+  background: var(--paper-2);
   cursor: zoom-in;
 }
 
-.evidence-pager__image img {
+.accordion-gallery__panel:focus-visible { outline: 3px solid var(--lime); outline-offset: 2px; }
+
+.accordion-gallery__index {
+  position: absolute;
+  top: 9px;
+  left: 9px;
+  z-index: 2;
+  padding: 4px 5px;
+  color: var(--paper-2);
+  background: var(--ink);
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: .08em;
+}
+
+.accordion-gallery__media {
+  display: grid;
+  min-width: 0;
+  min-height: 0;
+  padding: 9px;
+  place-items: center;
+}
+
+.accordion-gallery__media img {
   display: block;
-  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
   height: auto;
   object-fit: contain;
+  filter: saturate(.25) brightness(.7);
+  opacity: .58;
+  transform: scale(.88);
+  transition: filter .35s ease, opacity .35s ease, transform .45s cubic-bezier(.22,.78,.18,1);
 }
 
-.evidence-pager__dots {
-  display: flex;
-  gap: 7px;
-  align-items: center;
-  min-height: 38px;
-  padding: 9px 12px;
-  border-top: 1px solid var(--ink);
+.accordion-gallery__panel.is-active .accordion-gallery__media { padding: 12px 12px 62px; }
+.accordion-gallery__panel.is-active .accordion-gallery__media img { filter: none; opacity: 1; transform: none; }
+
+.accordion-gallery__caption {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  gap: 3px;
+  padding: 10px 11px;
+  color: var(--paper-2);
+  background: rgba(25,24,22,.92);
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity .25s ease .12s, transform .3s ease .12s;
 }
 
-.evidence-pager__dots button {
-  width: 100%;
-  height: 5px;
-  padding: 0;
-  background: color-mix(in srgb, currentColor 28%, transparent);
-  border: 0;
-  cursor: pointer;
+.accordion-gallery__panel.is-active .accordion-gallery__caption { opacity: 1; transform: none; }
+.accordion-gallery__caption b { overflow: hidden; font-size: 10px; line-height: 1.4; text-overflow: ellipsis; white-space: nowrap; }
+.accordion-gallery__caption i { color: #d9d0c5; font-size: 8px; font-style: normal; letter-spacing: .05em; }
+
+.accordion-gallery__hint {
+  margin: 8px 0 0;
+  color: color-mix(in srgb, currentColor 67%, transparent);
+  font-size: 9px;
+  line-height: 1.4;
+  text-align: center;
 }
 
-.evidence-pager__dots button.is-active { background: currentColor; }
-.evidence-pager--blue .evidence-pager__toolbar { background: #d8945f; }
-.evidence-pager--orange .evidence-pager__toolbar { background: #cc684d; }
+.accordion-gallery--blue .accordion-gallery__panel:not(.is-active) { background: #c97852; }
+.accordion-gallery--orange .accordion-gallery__panel:not(.is-active) { background: #b9543f; }
 
 @media (max-width: 760px) {
-  .evidence-pager__toolbar { grid-template-columns: auto 1fr; gap: 10px; }
-  .evidence-pager__toolbar p { white-space: normal; }
-  .evidence-pager__toolbar > div { grid-column: 1 / -1; }
-  .evidence-pager__toolbar button { width: 50%; flex: 1; }
+  .accordion-gallery { padding: 10px 8px 9px; }
+  .accordion-gallery__rail { gap: 4px; height: 350px; }
+  .accordion-gallery__panel { flex-basis: 34px; min-width: 30px; }
+  .accordion-gallery__panel.is-active { flex-basis: calc(100% - 88px); }
+  .accordion-gallery__index { top: 6px; left: 6px; }
+  .accordion-gallery__caption b { font-size: 9px; }
 }

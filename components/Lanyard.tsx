@@ -157,10 +157,11 @@ function Band({ mobile, frontImage, backImage, onActivate }: BandProps) {
   const [dragged, setDragged] = useState<THREE.Vector3 | false>(false);
   const [hovered, setHovered] = useState(false);
   const segmentProps = { canSleep: true, colliders: false as const, angularDamping: 4, linearDamping: 4 };
+  const ropeSegment = mobile ? .5 : .86;
 
-  useRopeJoint(fixed, joint1, [[0, 0, 0], [0, 0, 0], .42]);
-  useRopeJoint(joint1, joint2, [[0, 0, 0], [0, 0, 0], .42]);
-  useRopeJoint(joint2, joint3, [[0, 0, 0], [0, 0, 0], .42]);
+  useRopeJoint(fixed, joint1, [[0, 0, 0], [0, 0, 0], ropeSegment]);
+  useRopeJoint(joint1, joint2, [[0, 0, 0], [0, 0, 0], ropeSegment]);
+  useRopeJoint(joint2, joint3, [[0, 0, 0], [0, 0, 0], ropeSegment]);
   useSphericalJoint(joint3, card, [[0, 0, 0], [0, 1.5, 0]]);
 
   useEffect(() => {
@@ -183,15 +184,29 @@ function Band({ mobile, frontImage, backImage, onActivate }: BandProps) {
     }
 
     if (!fixed.current || !joint1.current || !joint2.current || !joint3.current || !card.current || !band.current) return;
+    const translations = [
+      joint3.current.translation(),
+      joint2.current.translation(),
+      joint1.current.translation(),
+      fixed.current.translation(),
+    ];
+    const allFinite = translations.every((point) =>
+      Number.isFinite(point.x) && Number.isFinite(point.y) && Number.isFinite(point.z));
+    if (!allFinite) return;
+
     [joint1, joint2].forEach((reference) => {
-      if (!reference.current.lerped) reference.current.lerped = new THREE.Vector3().copy(reference.current.translation());
-      const distance = Math.max(.1, Math.min(1, reference.current.lerped.distanceTo(reference.current.translation())));
-      reference.current.lerped.lerp(reference.current.translation(), delta * distance * 50);
+      const current = reference.current.translation();
+      const lerped = reference.current.lerped as THREE.Vector3 | undefined;
+      if (!lerped || !Number.isFinite(lerped.x) || !Number.isFinite(lerped.y) || !Number.isFinite(lerped.z)) {
+        reference.current.lerped = new THREE.Vector3().copy(current);
+      }
+      const distance = Math.max(.1, Math.min(1, reference.current.lerped.distanceTo(current)));
+      reference.current.lerped.lerp(current, delta * distance * 50);
     });
-    curve.points[0].copy(joint3.current.translation());
+    curve.points[0].copy(translations[0]);
     curve.points[1].copy(joint2.current.lerped);
     curve.points[2].copy(joint1.current.lerped);
-    curve.points[3].copy(fixed.current.translation());
+    curve.points[3].copy(translations[3]);
     (band.current.geometry as MeshLineGeometry).setPoints(curve.getPoints(mobile ? 16 : 32));
     angular.copy(card.current.angvel());
     rotation.copy(card.current.rotation());
