@@ -134,9 +134,9 @@ export default function Home() {
         <div className="hero-copy" data-reveal>
           <p className="eyebrow"><i /> FDE · AI 应用交付 · 前端体验</p>
           <h1>
-            <DepthText className="hero-depth hero-depth-one" text="把真实业务需求，" faceColor="#191816" depthColor="#8e8174" />
-            <DepthText className="hero-depth hero-depth-two" text="做成可用、" faceColor="#c95d42" depthColor="#784638" />
-            <DepthText className="hero-depth hero-depth-three" text="可核验的 AI 应用。" faceColor="#191816" depthColor="#8e8174" />
+            <DepthText className="hero-depth hero-depth-one" text="电子商务背景，" faceColor="#191816" depthColor="#8e8174" />
+            <DepthText className="hero-depth hero-depth-two" text="前端与 AI" faceColor="#c95d42" depthColor="#784638" />
+            <DepthText className="hero-depth hero-depth-three" text="应用实践。" faceColor="#191816" depthColor="#8e8174" />
           </h1>
           <p className="hero-summary">我是 Shay / 杨舒雅。我关注用户和商家实际遇到的问题，完成需求梳理、AI 工作流、前端界面和演示交付。</p>
           <div className="hero-actions"><a className="button button-secondary" href="#contact">联系 Shay ↗</a><span className="lanyard-action-copy"><b>右侧拖动吊牌</b>松手直接进入项目 ↓</span></div>
@@ -208,7 +208,7 @@ export default function Home() {
 
       <section id="about" className="about section-shell" data-reveal>
         <figure className="about-photo"><div><img src="/assets/profile/profile-01.jpg" alt="Shay 的生活照" /></div><figcaption>OFF DUTY / STILL CURIOUS</figcaption></figure>
-        <div className="about-copy"><span className="section-index">04 / ABOUT SHAY</span><h2>电子商务背景，<br />前端与 AI 应用实践。</h2><p>我习惯先理解业务、用户和交付目标，再把方案做成清楚的界面与可演示产品。正在寻找 FDE、AI 应用交付或偏产品的前端机会。</p><div className="skill-cloud"><span>React</span><span>TypeScript</span><span>Python</span><span>FastAPI</span><span>Prompt Design</span><span>UI Motion</span><span>Content Ops</span></div></div>
+        <div className="about-copy"><span className="section-index">04 / ABOUT SHAY</span><h2>把真实业务需求，<br />做成可用、可核验的 AI 应用。</h2><p>我习惯先理解业务、用户和交付目标，再把方案做成清楚的界面与可演示产品。正在寻找 FDE、AI 应用交付或偏产品的前端机会。</p><div className="skill-cloud"><span>React</span><span>TypeScript</span><span>Python</span><span>FastAPI</span><span>Prompt Design</span><span>UI Motion</span><span>Content Ops</span></div></div>
       </section>
 
       <footer id="contact"><div className="section-shell footer-main"><div className="footer-intro"><span>LET&apos;S BUILD SOMETHING USEFUL</span><h2>如果你在寻找<br />能理解需求、完成界面，<br /><em>也能把 AI 应用交付出来的人，</em><br />欢迎来聊。</h2></div><LineSidebar items={contactItems} /></div><div className="section-shell footer-bottom"><span>© 2026 SHAY / YANG SHUYA</span><span>AI APPLICATION DELIVERY · FRONTEND UI</span><a href="#top">BACK TO TOP ↑</a></div></footer>
