@@ -50,9 +50,9 @@ export default function Lanyard({ frontImage, backImage, onActivate }: Props) {
     <div className="lanyard-wrapper" aria-label="可拖动的 Shay 照片吊牌">
       <Canvas
         camera={{ position: [0, 0, mobile ? 20 : 17], fov: mobile ? 25 : 24 }}
-        dpr={[1, mobile ? 1.25 : 1.7]}
+        dpr={mobile ? 2 : [1, 1.7]}
         flat
-        gl={{ alpha: true, antialias: !mobile, toneMapping: THREE.NoToneMapping }}
+        gl={{ alpha: true, antialias: true, toneMapping: THREE.NoToneMapping }}
         onCreated={({ gl }) => {
           gl.outputColorSpace = THREE.SRGBColorSpace;
           gl.setClearColor(new THREE.Color(0x000000), 0);
@@ -104,7 +104,7 @@ function Band({ mobile, frontImage, backImage, onActivate }: BandProps) {
   const lineMaterial = useMemo(
     () => new MeshLineMaterial({
       color: "white",
-      depthTest: false,
+      depthTest: true,
       resolution: new THREE.Vector2(1000, mobile ? 2000 : 1000),
       useMap: 1,
       map: strapTexture,
@@ -250,7 +250,7 @@ function Band({ mobile, frontImage, backImage, onActivate }: BandProps) {
           </group>
         </RigidBody>
       </group>
-      <mesh ref={band}>
+      <mesh ref={band} position={[0, 0, -.12]} renderOrder={0}>
         <primitive object={lineGeometry} attach="geometry" />
         <primitive object={lineMaterial} attach="material" />
       </mesh>

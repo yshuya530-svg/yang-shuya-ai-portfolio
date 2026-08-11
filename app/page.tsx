@@ -4,13 +4,13 @@ import { useEffect } from "react";
 import AccordionGallery from "@/components/AccordionGallery";
 import BounceCards from "@/components/BounceCards";
 import DepthCarousel from "@/components/DepthCarousel";
+import DepthText from "@/components/DepthText";
 import DriftWall from "@/components/DriftWall";
 import FlowingMenu from "@/components/FlowingMenu";
 import Lanyard from "@/components/Lanyard";
 import LineSidebar from "@/components/LineSidebar";
 import SplashCursor from "@/components/SplashCursor";
 import StackGallery from "@/components/StackGallery";
-import StrokeText from "@/components/StrokeText";
 
 type MediaItem = { image: string; alt: string; caption: string };
 
@@ -58,6 +58,11 @@ const schoolShots: MediaItem[] = [
   { image: "/assets/experience/school/school-09.jpg", alt: "远足短视频公开发布页面", caption: "公开发布：远足短视频与传播数据" },
   { image: "/assets/experience/school/school-10.jpg", alt: "远足短视频公开评论", caption: "公开反馈：远足视频评论区" },
   { image: "/assets/experience/school/school-11.jpg", alt: "远足校本课程公开文章", caption: "公开文章：远足拉练校本课程" },
+  { image: "/assets/experience/school/school-12-camera.jpg", alt: "校园活动现场使用的相机", caption: "现场设备：活动影像采集准备" },
+  { image: "/assets/experience/school/school-13-womens-day.jpg", alt: "学校三八妇女节活动布置", caption: "妇女节活动：主题场景与视觉布置" },
+  { image: "/assets/experience/school/school-14-auditorium.jpg", alt: "学校礼堂活动现场观众席", caption: "礼堂活动：大型活动现场记录" },
+  { image: "/assets/experience/school/school-15-gifts.jpg", alt: "妇女节活动鲜花与礼品准备现场", caption: "活动筹备：鲜花礼品与现场执行" },
+  { image: "/assets/experience/school/school-16-shay-shooting.jpg", alt: "Shay 在校园远足活动现场拍摄", caption: "现场采集：活动行进中的摄影记录" },
 ];
 
 const weishiShots: MediaItem[] = [
@@ -129,9 +134,9 @@ export default function Home() {
         <div className="hero-copy" data-reveal>
           <p className="eyebrow"><i /> FDE · AI 应用交付 · 前端体验</p>
           <h1>
-            <StrokeText className="hero-stroke hero-stroke-one" text="把真实业务需求，" fontSize={112} trigger="loop" drawDuration={1.1} fillDelay={.08} stagger={.028} />
-            <StrokeText className="hero-stroke hero-stroke-two" text="做成可用、" strokeColor="#c95d42" fillColor="#c95d42" fontSize={112} trigger="loop" drawDuration={1.1} fillDelay={.08} stagger={.028} />
-            <StrokeText className="hero-stroke hero-stroke-three" text="可核验的 AI 应用。" fontSize={112} trigger="loop" drawDuration={1.1} fillDelay={.08} stagger={.028} />
+            <DepthText className="hero-depth hero-depth-one" text="把真实业务需求，" faceColor="#191816" depthColor="#8e8174" />
+            <DepthText className="hero-depth hero-depth-two" text="做成可用、" faceColor="#c95d42" depthColor="#784638" />
+            <DepthText className="hero-depth hero-depth-three" text="可核验的 AI 应用。" faceColor="#191816" depthColor="#8e8174" />
           </h1>
           <p className="hero-summary">我是 Shay / 杨舒雅。我关注用户和商家实际遇到的问题，完成需求梳理、AI 工作流、前端界面和演示交付。</p>
           <div className="hero-actions"><a className="button button-secondary" href="#contact">联系 Shay ↗</a><span className="lanyard-action-copy"><b>右侧拖动吊牌</b>松手直接进入项目 ↓</span></div>
@@ -160,7 +165,7 @@ export default function Home() {
       </section>
 
       <section id="work" className="work">
-        <div className="section-shell section-heading" data-reveal><div><span className="section-index">01 / PROJECTS · 项目</span><h2>三个项目，三条从需求<br />走到交付结果的路径。</h2></div><p>每个项目独立成章；页面中的数据、界面与公开反馈均来自实际材料。</p></div>
+        <div className="section-shell section-heading" data-reveal><div><span className="section-index">01 / PROJECTS · 项目</span><h2>三个项目，三条从需求<br />走到交付结果的路径。</h2></div></div>
 
         <div className="section-shell project-divider" data-reveal><span>PROJECT 01</span><strong>EcomLens AI</strong><p>电商评论洞察与经营行动</p></div>
 
@@ -171,7 +176,7 @@ export default function Home() {
 
         <div className="workflow section-shell" data-reveal><div className="workflow-title"><span>FROM RAW DATA TO ACTION</span><b>端到端工作流</b></div><div className="workflow-track">{workflow.map(([n,title,text]) => <div className="workflow-step" key={n}><span>{n}</span><i /><h4>{title}</h4><p>{text}</p></div>)}</div></div>
 
-        <div className="gallery-block section-shell" data-reveal><div className="gallery-heading"><div><span>ECOMLENS / PRODUCT EVIDENCE</span><h3>从概览到报告的 5 个关键界面</h3></div><p>Depth Carousel 已按横向后台界面调整；图片完整显示，不再截边。</p></div><DepthCarousel items={ecomShots} cardWidth={930} cardHeight={450} stageHeight={610} depth={145} spread={92} tilt={8} visibleCards={3} fit="contain" /></div>
+        <div className="gallery-block section-shell" data-reveal><div className="gallery-heading"><div><span>ECOMLENS / PRODUCT EVIDENCE</span><h3>从概览到报告的 5 个关键界面</h3></div></div><DepthCarousel items={ecomShots} cardWidth={930} cardHeight={450} stageHeight={610} depth={145} spread={92} tilt={8} visibleCards={3} fit="contain" /></div>
 
         <div className="section-shell project-divider project-divider-spaced" data-reveal><span>PROJECT 02</span><strong>AI 智能体设计与前端体验</strong><p>角色系统、交互体验与持续迭代</p></div>
 
@@ -196,7 +201,7 @@ export default function Home() {
       </section>
 
       <section id="experience" className="experience section-shell">
-        <div className="section-heading" data-reveal><div><span className="section-index">03 / INTERNSHIPS · 实习</span><h2>两段实习，两个真实的<br />内容交付现场。</h2></div><p>所有画面保持原比例完整展示；点击可看完整大图。</p></div>
+        <div className="section-heading" data-reveal><div><span className="section-index">03 / INTERNSHIPS · 实习</span><h2>两段实习，两个真实的<br />内容交付现场。</h2></div></div>
         <article className="experience-case" data-reveal><div className="experience-copy"><span>2026 / SCHOOL COMMUNICATION</span><h3>玉林新世纪高级中学</h3><p>参与校园活动内容策划、现场采集、短视频与公众号编辑。从活动现场到公开成稿，留下完整交付证据。</p><div className="experience-tags"><span>现场采集</span><span>短视频</span><span>图文编辑</span><span>活动协作</span></div></div><DriftWall items={schoolShots} /></article>
         <article className="experience-case experience-case-alt" data-reveal><div className="experience-copy"><span>2025 / MEDIA DELIVERY</span><h3>微视河南文化传媒中心</h3><p>参与公开内容采编、平台风格适配与多渠道分发。作者署名、阅读量和转载页面构成可核验的工作记录。</p><div className="experience-tags"><span>内容采编</span><span>平台适配</span><span>多渠道分发</span><span>公开传播</span></div></div><BounceCards items={weishiShots} /></article>
       </section>

@@ -115,7 +115,7 @@ export default function DepthCarousel({
     if (!root) return;
     const observer = new ResizeObserver(([entry]) => {
       const needed = cardWidth + Math.abs(spread) * 2 + 120;
-      scaleRef.current = clamp(entry.contentRect.width / needed, 0.42, 1);
+      scaleRef.current = clamp(entry.contentRect.width / needed, 0.26, 1);
       layout(positionRef.current);
     });
     observer.observe(root);

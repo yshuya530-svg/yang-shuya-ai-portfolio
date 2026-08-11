@@ -9,8 +9,8 @@
 .accordion-gallery__rail {
   display: flex;
   gap: 7px;
-  width: min(100%, 460px);
-  height: clamp(320px, 27vw, 390px);
+  width: min(100%, 520px);
+  height: clamp(410px, 34vw, 500px);
   margin-inline: auto;
 }
 
@@ -18,8 +18,9 @@
   position: relative;
   display: grid;
   flex: 0 1 54px;
-  grid-template-rows: minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) 58px;
   min-width: 42px;
+  height: 100%;
   padding: 0;
   overflow: hidden;
   color: inherit;
@@ -30,7 +31,7 @@
 }
 
 .accordion-gallery__panel.is-active {
-  flex-basis: min(72%, 280px);
+  flex-basis: min(76%, 340px);
   background: var(--paper-2);
   cursor: zoom-in;
 }
@@ -51,19 +52,24 @@
 }
 
 .accordion-gallery__media {
+  position: relative;
   display: grid;
+  width: 100%;
   min-width: 0;
   min-height: 0;
-  padding: 9px;
+  padding: 0;
   place-items: center;
+  overflow: hidden;
 }
 
 .accordion-gallery__media img {
+  position: absolute;
+  inset: 9px;
   display: block;
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
+  width: calc(100% - 18px);
+  height: calc(100% - 18px);
+  max-width: none;
+  max-height: none;
   object-fit: contain;
   filter: saturate(.25) brightness(.7);
   opacity: .58;
@@ -71,16 +77,19 @@
   transition: filter .35s ease, opacity .35s ease, transform .45s cubic-bezier(.22,.78,.18,1);
 }
 
-.accordion-gallery__panel.is-active .accordion-gallery__media { padding: 12px 12px 62px; }
+.accordion-gallery__panel.is-active .accordion-gallery__media { padding: 0; }
+.accordion-gallery__panel.is-active .accordion-gallery__media img {
+  inset: 12px;
+  width: calc(100% - 24px);
+  height: calc(100% - 24px);
+}
 .accordion-gallery__panel.is-active .accordion-gallery__media img { filter: none; opacity: 1; transform: none; }
 
 .accordion-gallery__caption {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
   display: grid;
   gap: 3px;
+  min-width: 0;
+  min-height: 58px;
   padding: 10px 11px;
   color: var(--paper-2);
   background: rgba(25,24,22,.92);
@@ -106,9 +115,9 @@
 
 @media (max-width: 760px) {
   .accordion-gallery { padding: 10px 8px 9px; }
-  .accordion-gallery__rail { gap: 4px; height: 350px; }
+  .accordion-gallery__rail { gap: 4px; height: 430px; }
   .accordion-gallery__panel { flex-basis: 34px; min-width: 30px; }
-  .accordion-gallery__panel.is-active { flex-basis: calc(100% - 88px); }
+  .accordion-gallery__panel.is-active { flex-basis: calc(100% - 76px); }
   .accordion-gallery__index { top: 6px; left: 6px; }
   .accordion-gallery__caption b { font-size: 9px; }
 }

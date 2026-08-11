@@ -31,6 +31,7 @@ export default function DriftWall({ items }: { items: DriftItem[] }) {
                       className="drift-card"
                       type="button"
                       key={`${copyIndex}-${slot.item.image}`}
+                      data-smart-crop={slot.item.image.endsWith("school-09.jpg") ? "video-center" : undefined}
                       onClick={() => setActive(slot.originalIndex)}
                       aria-label={`查看原图：${slot.item.caption}`}
                       tabIndex={copyIndex === 1 ? -1 : 0}

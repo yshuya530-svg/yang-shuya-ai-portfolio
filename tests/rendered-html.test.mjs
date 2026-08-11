@@ -40,8 +40,10 @@ test("keeps all approved portfolio assets and public boundaries", async () => {
 
   const mediaFiles = assetFiles.filter((file) => /\.(?:jpg|png|mp4)$/i.test(file));
   const referencedAssets = new Set(page.match(/\/assets\/[^"]+/g) ?? []);
-  assert.equal(mediaFiles.length, 44);
-  assert.equal(referencedAssets.size, 44);
+  assert.equal(mediaFiles.length, 49);
+  assert.equal(referencedAssets.size, 49);
+  assert.match(page, /school-16-shay-shooting\.jpg/);
+  assert.match(page, /DepthText/);
   assert.match(page, /界面模拟/);
   assert.match(page, /lxyg0228/);
   assert.match(page, /github\.com\/yshuya530-svg\/EcomLens-AI/);

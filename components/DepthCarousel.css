@@ -114,10 +114,13 @@
 }
 
 @media (max-width: 720px) {
+  .depth-carousel { height: 390px !important; }
+  .depth-carousel__stage { inset: 0 0 82px; }
+  .depth-carousel__card img { object-fit: contain !important; }
   .depth-carousel__arrow { width: 40px; height: 40px; }
   .depth-carousel__arrow--prev { left: 8px; }
   .depth-carousel__arrow--next { right: 8px; }
-  .depth-carousel__footer { padding-inline: 10px; }
-  .depth-carousel__caption { font-size: 10px; }
+  .depth-carousel__footer { min-height: 74px; padding-inline: 10px; }
+  .depth-carousel__caption { font-size: 10px; line-height: 1.35; }
   .depth-carousel__footer > button { font-size: 9px; }
 }

@@ -25,6 +25,7 @@ export default function StackGallery({ items }: { items: StackItem[] }) {
             <StackCard
               key={items[itemIndex].image}
               item={items[itemIndex]}
+              itemIndex={itemIndex}
               depth={orderIndex}
               total={order.length}
               isTop={isTop}
@@ -40,8 +41,9 @@ export default function StackGallery({ items }: { items: StackItem[] }) {
   );
 }
 
-function StackCard({ item, depth, total, isTop, onSendBack, onOpen }: {
+function StackCard({ item, itemIndex, depth, total, isTop, onSendBack, onOpen }: {
   item: StackItem;
+  itemIndex: number;
   depth: number;
   total: number;
   isTop: boolean;
@@ -98,7 +100,7 @@ function StackCard({ item, depth, total, isTop, onSendBack, onOpen }: {
       }}
     >
       <div className="stack-card__media"><img src={item.image} alt={item.alt} draggable="false" /></div>
-      <div className="stack-card__caption"><span>{String(depth + 1).padStart(2, "0")}</span><p>{item.caption}</p><b>{isTop ? "点击放大 ↗" : ""}</b></div>
+      <div className="stack-card__caption"><span>{String(itemIndex + 1).padStart(2, "0")}</span><p>{item.caption}</p><b>{isTop ? "点击放大 ↗" : ""}</b></div>
     </motion.article>
   );
 }
