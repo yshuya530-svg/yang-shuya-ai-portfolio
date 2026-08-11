@@ -7,6 +7,15 @@ import "./DriftWall.css";
 type DriftItem = { image: string; alt: string; caption: string };
 type DriftSlot = { item: DriftItem | null; originalIndex: number | null };
 
+const smartCrop = (image: string) => {
+  if (image.endsWith("school-06.jpg") || image.endsWith("school-07.jpg")) return "signature";
+  if (image.endsWith("school-09.jpg")) return "video-center";
+  if (image.endsWith("school-12-camera.jpg")) return "camera";
+  if (image.endsWith("school-15-gifts.jpg")) return "gifts";
+  if (image.endsWith("school-16-shay-shooting.jpg")) return "shay-shooting";
+  return undefined;
+};
+
 export default function DriftWall({ items }: { items: DriftItem[] }) {
   const [active, setActive] = useState<number | null>(null);
   const lightboxItems = useMemo<LightboxItem[]>(() => items, [items]);
@@ -31,7 +40,7 @@ export default function DriftWall({ items }: { items: DriftItem[] }) {
                       className="drift-card"
                       type="button"
                       key={`${copyIndex}-${slot.item.image}`}
-                      data-smart-crop={slot.item.image.endsWith("school-09.jpg") ? "video-center" : undefined}
+                      data-smart-crop={smartCrop(slot.item.image)}
                       onClick={() => setActive(slot.originalIndex)}
                       aria-label={`查看原图：${slot.item.caption}`}
                       tabIndex={copyIndex === 1 ? -1 : 0}

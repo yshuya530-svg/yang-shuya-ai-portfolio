@@ -49,7 +49,7 @@ export default function Lanyard({ frontImage, backImage, onActivate }: Props) {
   return (
     <div className="lanyard-wrapper" aria-label="可拖动的 Shay 照片吊牌">
       <Canvas
-        camera={{ position: [0, 0, mobile ? 20 : 17], fov: mobile ? 25 : 24 }}
+        camera={{ position: [0, 0, mobile ? 13 : 11], fov: 25 }}
         dpr={mobile ? 2 : [1, 1.7]}
         flat
         gl={{ alpha: true, antialias: true, toneMapping: THREE.NoToneMapping }}
@@ -104,7 +104,7 @@ function Band({ mobile, frontImage, backImage, onActivate }: BandProps) {
   const lineMaterial = useMemo(
     () => new MeshLineMaterial({
       color: "white",
-      depthTest: true,
+      depthTest: false,
       resolution: new THREE.Vector2(1000, mobile ? 2000 : 1000),
       useMap: 1,
       map: strapTexture,
@@ -157,7 +157,7 @@ function Band({ mobile, frontImage, backImage, onActivate }: BandProps) {
   const [dragged, setDragged] = useState<THREE.Vector3 | false>(false);
   const [hovered, setHovered] = useState(false);
   const segmentProps = { canSleep: true, colliders: false as const, angularDamping: 4, linearDamping: 4 };
-  const ropeSegment = mobile ? .5 : .86;
+  const ropeSegment = mobile ? .78 : 1;
 
   useRopeJoint(fixed, joint1, [[0, 0, 0], [0, 0, 0], ropeSegment]);
   useRopeJoint(joint1, joint2, [[0, 0, 0], [0, 0, 0], ropeSegment]);
@@ -218,16 +218,16 @@ function Band({ mobile, frontImage, backImage, onActivate }: BandProps) {
 
   return (
     <>
-      <group position={[0, 3.25, 0]}>
+      <group position={[0, 4, 0]}>
         <RigidBody ref={fixed} {...segmentProps} type="fixed" />
-        <RigidBody position={[.3, 0, 0]} ref={joint1} {...segmentProps}><BallCollider args={[.1]} /></RigidBody>
-        <RigidBody position={[.6, 0, 0]} ref={joint2} {...segmentProps}><BallCollider args={[.1]} /></RigidBody>
-        <RigidBody position={[.9, 0, 0]} ref={joint3} {...segmentProps}><BallCollider args={[.1]} /></RigidBody>
-        <RigidBody position={[1.2, 0, 0]} ref={card} {...segmentProps} type={dragged ? "kinematicPosition" : "dynamic"}>
-          <CuboidCollider args={[1.16, 1.65, .02]} />
+        <RigidBody position={[.5, 0, 0]} ref={joint1} {...segmentProps}><BallCollider args={[.1]} /></RigidBody>
+        <RigidBody position={[1, 0, 0]} ref={joint2} {...segmentProps}><BallCollider args={[.1]} /></RigidBody>
+        <RigidBody position={[1.5, 0, 0]} ref={joint3} {...segmentProps}><BallCollider args={[.1]} /></RigidBody>
+        <RigidBody position={[2, 0, 0]} ref={card} {...segmentProps} type={dragged ? "kinematicPosition" : "dynamic"}>
+          <CuboidCollider args={[.8, 1.125, .01]} />
           <group
-            scale={mobile ? 3.8 : 4.45}
-            position={[0, -1.55, -.05]}
+            scale={2.25}
+            position={[0, -1.2, -.05]}
             onPointerOver={() => setHovered(true)}
             onPointerOut={() => setHovered(false)}
             onPointerUp={(event) => {
@@ -250,7 +250,7 @@ function Band({ mobile, frontImage, backImage, onActivate }: BandProps) {
           </group>
         </RigidBody>
       </group>
-      <mesh ref={band} position={[0, 0, -.12]} renderOrder={0}>
+      <mesh ref={band} position={[0, 0, -.12]} renderOrder={1}>
         <primitive object={lineGeometry} attach="geometry" />
         <primitive object={lineMaterial} attach="material" />
       </mesh>

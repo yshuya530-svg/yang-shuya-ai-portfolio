@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import AccordionGallery from "@/components/AccordionGallery";
 import BounceCards from "@/components/BounceCards";
 import DepthCarousel from "@/components/DepthCarousel";
-import DepthText from "@/components/DepthText";
+import WarpText from "@/components/WarpText/WarpText";
 import DriftWall from "@/components/DriftWall";
 import FlowingMenu from "@/components/FlowingMenu";
 import Lanyard from "@/components/Lanyard";
@@ -35,9 +35,9 @@ const agentShots: MediaItem[] = [
 ];
 
 const agentXhsShots: MediaItem[] = [
+  { image: "/assets/xhs-agent/xhs-agent-03-profile.jpg", alt: "上弦月小红书主页", caption: "内容主页：智能体界面改造的公开分享记录" },
   { image: "/assets/xhs-agent/xhs-agent-01-post.jpg", alt: "小红书界面美化分享作品数据", caption: "教程作品：1.1 万浏览、1961 赞、1083 收藏" },
   { image: "/assets/xhs-agent/xhs-agent-02-comments.jpg", alt: "小红书教程评论反馈", caption: "评论反馈：用户按教程完成界面美化" },
-  { image: "/assets/xhs-agent/xhs-agent-03-profile.jpg", alt: "上弦月小红书主页", caption: "内容主页：智能体界面改造的公开分享记录" },
 ];
 
 const growthShots: MediaItem[] = [
@@ -133,10 +133,22 @@ export default function Home() {
       <section className="hero section-shell">
         <div className="hero-copy" data-reveal>
           <p className="eyebrow"><i /> FDE · AI 应用交付 · 前端体验</p>
-          <h1>
-            <DepthText className="hero-depth hero-depth-one" text="电子商务背景，" faceColor="#191816" depthColor="#8e8174" />
-            <DepthText className="hero-depth hero-depth-two" text="前端与 AI" faceColor="#c95d42" depthColor="#784638" />
-            <DepthText className="hero-depth hero-depth-three" text="应用实践。" faceColor="#191816" depthColor="#8e8174" />
+          <h1 className="hero-title">
+            <WarpText
+              className="hero-warp"
+              text={"电子商务背景，\n前端与 AI 应用实践。"}
+              color="#191816"
+              warpStrength={0.055}
+              warpScale={1.5}
+              speed={0.42}
+              pointerInfluence={0.34}
+              pointerStrength={0.24}
+              refraction={0.008}
+              fontSize="clamp(3rem, 7.2vw, 6.8rem)"
+              fontWeight={900}
+              letterSpacing="-0.07em"
+              lineHeight={0.9}
+            />
           </h1>
           <p className="hero-summary">我是 Shay / 杨舒雅。我关注用户和商家实际遇到的问题，完成需求梳理、AI 工作流、前端界面和演示交付。</p>
           <div className="hero-actions"><a className="button button-secondary" href="#contact">联系 Shay ↗</a><span className="lanyard-action-copy"><b>右侧拖动吊牌</b>松手直接进入项目 ↓</span></div>
@@ -188,7 +200,7 @@ export default function Home() {
         <div className="section-shell project-divider project-divider-spaced" data-reveal><span>PROJECT 03</span><strong>内容教程与增长实验</strong><p>公开反馈、账号增长与数据复盘</p></div>
 
         <div id="content-project" className="content-cases section-shell" data-reveal>
-          <article className="content-card content-card-blue"><span className="card-label">产品衍生内容 / 03A</span><h3>把界面改造过程整理成用户能复用的教程。</h3><p>公开分享前端美化过程，用收藏和评论反馈检查教程是否清楚、是否真正帮用户完成操作。</p><div className="content-metrics"><div><strong>1.1万</strong><span>浏览</span></div><div><strong>1961</strong><span>点赞</span></div><div><strong>1083</strong><span>收藏</span></div></div><AccordionGallery items={agentXhsShots} tone="blue" /></article>
+          <article className="content-card content-card-blue"><span className="card-label">产品衍生内容 / 03A</span><h3>把界面改造过程整理成用户能复用的教程。</h3><p>公开分享前端美化过程，用收藏和评论反馈检查教程是否清楚。</p><div className="content-metrics"><div><strong>1.1万</strong><span>浏览</span></div><div><strong>1961</strong><span>点赞</span></div><div><strong>1083</strong><span>收藏</span></div></div><AccordionGallery items={agentXhsShots} tone="blue" /></article>
           <article className="content-card content-card-coral"><span className="card-label">独立增长实验 / 03B</span><h3>围绕连续选题和数据复盘，完成从 0 到 1800+ 粉丝。</h3><p>观察曝光、互动、主页访问和涨粉曲线，再调整下一轮主题与内容结构。</p><div className="content-metrics"><div><strong>1806</strong><span>总粉丝</span></div><div><strong>5.0万</strong><span>获赞与收藏</span></div><div><strong>93.7%</strong><span>活跃粉丝占比</span></div></div><AccordionGallery items={growthShots} tone="orange" /></article>
         </div>
       </section>

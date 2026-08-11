@@ -62,10 +62,8 @@ main { width: 100%; overflow-x: clip; overflow-y: visible; }
 .hero-copy { position: relative; z-index: 2; container-type: inline-size; padding-top: clamp(70px, 7vw, 108px); }
 .eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 28px; }
 .eyebrow i { width: 9px; height: 9px; border-radius: 50%; background: #22ad74; box-shadow: 0 0 0 5px rgba(34,173,116,.12); }
-.hero h1 { display: grid; align-items: start; gap: 17px; max-width: 720px; margin: 0; }
-.hero-depth { width: max-content; max-width: 100%; --depth-text-font-size: clamp(3rem, 10cqi, 4.8rem) !important; }
-.hero-depth-two { margin-left: 4%; }
-.hero-depth-three { margin-left: 1%; }
+.hero-title { width: 100%; max-width: 760px; margin: 0; }
+.hero-warp { min-height: clamp(250px, 25vw, 360px); }
 .hero-summary { max-width: 600px; margin: 30px 0 0; font-size: clamp(15px, 1.2vw, 19px); line-height: 1.75; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
 .lanyard-action-copy { align-self: center; max-width: 220px; padding: 8px 11px; color: var(--ink); background: #dfd7cb; border-left: 4px solid var(--clay); font-size: 10px; font-weight: 650; line-height: 1.5; letter-spacing: .04em; }
@@ -258,7 +256,7 @@ footer { color: white; background: var(--ink); }
   .section-shell { width: min(calc(100% - 48px), 1440px); }
   .site-header { padding-inline: 24px; }
   .hero { grid-template-columns: minmax(0, .92fr) minmax(390px, 1.08fr); gap: 26px; }
-  .hero h1 { gap: 13px; }
+  .hero-warp { min-height: clamp(230px, 27vw, 310px); }
   .hero-summary { font-size: 15px; }
 }
 
@@ -272,10 +270,8 @@ footer { color: white; background: var(--ink); }
   .site-header .nav-cta { padding: 11px 13px; }
   .hero { grid-template-columns: 1fr; gap: 8px; min-height: auto; padding-block: 0 28px; }
   .hero-copy { padding-top: 48px; }
-  .hero h1 { max-width: 620px; }
-  .hero-depth { --depth-text-font-size: clamp(2rem, 9.4vw, 3rem) !important; }
-  .hero-depth-two { margin-left: 2%; }
-  .hero-depth-three { margin-left: 0; }
+  .hero-title { max-width: 620px; }
+  .hero-warp { min-height: 205px; }
   .hero-summary { margin-top: 25px; font-size: 15px; }
   .hero-lanyard { width: 100%; max-width: 540px; margin-inline: auto; }
   .directory { grid-template-columns: 1fr; gap: 42px; padding-block: 88px; }

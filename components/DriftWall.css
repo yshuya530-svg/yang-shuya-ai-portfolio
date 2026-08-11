@@ -94,6 +94,27 @@
   transform: translateY(-31.5%);
 }
 
+.drift-card[data-smart-crop="signature"] .drift-card__media,
+.drift-card[data-smart-crop="camera"] .drift-card__media,
+.drift-card[data-smart-crop="gifts"] .drift-card__media,
+.drift-card[data-smart-crop="shay-shooting"] .drift-card__media { padding: 0; }
+
+.drift-card[data-smart-crop="signature"] .drift-card__media img,
+.drift-card[data-smart-crop="camera"] .drift-card__media img,
+.drift-card[data-smart-crop="gifts"] .drift-card__media img,
+.drift-card[data-smart-crop="shay-shooting"] .drift-card__media img {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  object-fit: cover;
+}
+
+.drift-card[data-smart-crop="signature"] .drift-card__media img { object-position: 50% 94%; }
+.drift-card[data-smart-crop="camera"] .drift-card__media img { object-position: 50% 78%; }
+.drift-card[data-smart-crop="gifts"] .drift-card__media img { object-position: 50% 72%; }
+.drift-card[data-smart-crop="shay-shooting"] .drift-card__media img { object-position: 28% 62%; }
+
 .drift-card__caption {
   display: -webkit-box;
   min-height: 42px;

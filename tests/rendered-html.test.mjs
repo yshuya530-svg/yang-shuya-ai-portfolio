@@ -43,7 +43,7 @@ test("keeps all approved portfolio assets and public boundaries", async () => {
   assert.equal(mediaFiles.length, 49);
   assert.equal(referencedAssets.size, 49);
   assert.match(page, /school-16-shay-shooting\.jpg/);
-  assert.match(page, /DepthText/);
+  assert.match(page, /WarpText/);
   assert.match(page, /界面模拟/);
   assert.match(page, /lxyg0228/);
   assert.match(page, /github\.com\/yshuya530-svg\/EcomLens-AI/);
