@@ -111,9 +111,17 @@
 }
 
 .drift-card[data-smart-crop="signature"] .drift-card__media img { object-position: 50% 94%; }
-.drift-card[data-smart-crop="camera"] .drift-card__media img { object-position: 50% 78%; }
+.drift-card[data-smart-crop="camera"] .drift-card__media img {
+  object-position: 50% 82%;
+  transform: scale(1.5);
+  transform-origin: 50% 82%;
+}
 .drift-card[data-smart-crop="gifts"] .drift-card__media img { object-position: 50% 72%; }
-.drift-card[data-smart-crop="shay-shooting"] .drift-card__media img { object-position: 28% 62%; }
+.drift-card[data-smart-crop="shay-shooting"] .drift-card__media img {
+  object-position: 24% 70%;
+  transform: scale(1.45);
+  transform-origin: 24% 70%;
+}
 
 .drift-card__caption {
   display: -webkit-box;

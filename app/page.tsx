@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import AccordionGallery from "@/components/AccordionGallery";
 import BounceCards from "@/components/BounceCards";
 import DepthCarousel from "@/components/DepthCarousel";
-import WarpText from "@/components/WarpText/WarpText";
+import ParticleText from "@/components/ParticleText/ParticleText";
 import DriftWall from "@/components/DriftWall";
 import FlowingMenu from "@/components/FlowingMenu";
 import Lanyard from "@/components/Lanyard";
@@ -28,10 +28,7 @@ const agentShots: MediaItem[] = [
   { image: "/assets/agent/agent-03-player.jpg", alt: "侧边栏音乐播放器组件", caption: "侧边栏组件：玻璃拟态音乐播放器" },
   { image: "/assets/agent/agent-04-world.jpg", alt: "智能体世界设定面板", caption: "信息面板：世界设定、状态与内容层级" },
   { image: "/assets/agent/agent-05-message.jpg", alt: "群聊私聊与搜索面板", caption: "交互模块：群聊、私聊与搜索记录" },
-  { image: "/assets/agent/agent-06-world-alt.jpg", alt: "世界设定长页面记录", caption: "长页面记录：设定内容与状态信息组织" },
-  { image: "/assets/agent/agent-07-player-alt.jpg", alt: "音乐播放器另一状态", caption: "播放器组件的展开状态" },
   { image: "/assets/agent/agent-08-regex.jpg", alt: "正则规则管理界面", caption: "正则管理：规则开关、编辑与预览" },
-  { image: "/assets/agent/agent-09-transfer-alt.jpg", alt: "仿手机虚拟转账另一状态", caption: "仿手机组件的消息与虚拟转账状态" },
 ];
 
 const agentXhsShots: MediaItem[] = [
@@ -134,20 +131,18 @@ export default function Home() {
         <div className="hero-copy" data-reveal>
           <p className="eyebrow"><i /> FDE · AI 应用交付 · 前端体验</p>
           <h1 className="hero-title">
-            <WarpText
+            <ParticleText
               className="hero-warp"
               text={"电子商务背景，\n前端与 AI 应用实践。"}
               color="#191816"
-              warpStrength={0.055}
-              warpScale={1.5}
-              speed={0.42}
-              pointerInfluence={0.34}
-              pointerStrength={0.24}
-              refraction={0.008}
-              fontSize="clamp(3rem, 7.2vw, 6.8rem)"
+              highlightColor="#c95d42"
+              particleSize={2.8}
+              density={3}
+              scatter={145}
+              pointerRepel={36}
+              repelRadius={115}
+              fontSize="clamp(3rem, 6.4vw, 6.4rem)"
               fontWeight={900}
-              letterSpacing="-0.07em"
-              lineHeight={0.9}
             />
           </h1>
           <p className="hero-summary">我是 Shay / 杨舒雅。我关注用户和商家实际遇到的问题，完成需求梳理、AI 工作流、前端界面和演示交付。</p>
@@ -193,7 +188,7 @@ export default function Home() {
         <div className="section-shell project-divider project-divider-spaced" data-reveal><span>PROJECT 02</span><strong>AI 智能体设计与前端体验</strong><p>角色系统、交互体验与持续迭代</p></div>
 
         <article id="agent-project" className="agent-case section-shell" data-reveal>
-          <div className="agent-copy"><div className="case-kicker"><span>02 / AI AGENT + FRONTEND UX</span><span>HTML · CSS · JS · PROMPT</span></div><h3>设计两个垂直场景智能体，并把平台交互体验一起做完整。</h3><p className="case-lead">我负责角色设定、任务边界、Prompt 结构和回复规范，也独立完成信息面板、侧边栏和交互组件的前端优化。根据真实对话反馈持续调整 Prompt 逻辑，提升长对话中的稳定性。</p><div className="agent-outcomes"><div><strong>2</strong><span>垂直场景智能体</span></div><div><strong>10万+</strong><span>真实互动</span></div><div><strong>1000+</strong><span>原平台 + 内容账号累计关注</span></div><div><strong>1万+</strong><span>获赞与收藏</span></div></div><FlowingMenu items={agentScopeItems} /><p className="simulation-note">下方是部分前端实现证据。仿手机只是其中一个组件；其中转账金额和消息内容均为界面模拟。</p></div>
+          <div className="agent-copy"><div className="case-kicker"><span>02 / AI AGENT + FRONTEND UX</span><span>HTML · CSS · JS · PROMPT</span></div><h3>设计两个垂直场景智能体，并把平台交互体验一起做完整。</h3><p className="case-lead">我负责角色设定、任务边界、Prompt 结构和回复规范，独立完成信息面板、侧边栏和交互组件的前端优化。根据真实对话反馈持续调整 Prompt 逻辑，提升长对话中的稳定性。</p><div className="agent-outcomes"><div><strong>2</strong><span>垂直场景智能体</span></div><div><strong>10万+</strong><span>真实互动</span></div><div><strong>1000+</strong><span>原平台 + 内容账号累计关注</span></div><div><strong>1万+</strong><span>获赞与收藏</span></div></div><FlowingMenu items={agentScopeItems} /><p className="simulation-note">下方是部分前端实现证据。仿手机只是其中一个组件；其中转账金额和消息内容均为界面模拟。</p></div>
           <div className="agent-stage"><StackGallery items={agentShots} /></div>
         </article>
 

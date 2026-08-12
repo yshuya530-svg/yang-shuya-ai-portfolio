@@ -9,8 +9,8 @@
 .accordion-gallery__rail {
   display: flex;
   gap: 7px;
-  width: min(100%, 520px);
-  height: clamp(410px, 34vw, 500px);
+  width: min(100%, 560px);
+  height: clamp(545px, 45vw, 665px);
   margin-inline: auto;
 }
 
@@ -115,7 +115,7 @@
 
 @media (max-width: 760px) {
   .accordion-gallery { padding: 10px 8px 9px; }
-  .accordion-gallery__rail { gap: 4px; height: 430px; }
+  .accordion-gallery__rail { gap: 4px; height: min(560px, 78vh); }
   .accordion-gallery__panel { flex-basis: 34px; min-width: 30px; }
   .accordion-gallery__panel.is-active { flex-basis: calc(100% - 76px); }
   .accordion-gallery__index { top: 6px; left: 6px; }

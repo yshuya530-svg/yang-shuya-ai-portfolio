@@ -63,7 +63,7 @@ main { width: 100%; overflow-x: clip; overflow-y: visible; }
 .eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 28px; }
 .eyebrow i { width: 9px; height: 9px; border-radius: 50%; background: #22ad74; box-shadow: 0 0 0 5px rgba(34,173,116,.12); }
 .hero-title { width: 100%; max-width: 760px; margin: 0; }
-.hero-warp { min-height: clamp(250px, 25vw, 360px); }
+.hero-warp { min-height: clamp(250px, 26vw, 370px); }
 .hero-summary { max-width: 600px; margin: 30px 0 0; font-size: clamp(15px, 1.2vw, 19px); line-height: 1.75; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
 .lanyard-action-copy { align-self: center; max-width: 220px; padding: 8px 11px; color: var(--ink); background: #dfd7cb; border-left: 4px solid var(--clay); font-size: 10px; font-weight: 650; line-height: 1.5; letter-spacing: .04em; }
@@ -74,7 +74,12 @@ main { width: 100%; overflow-x: clip; overflow-y: visible; }
 .button:hover { transform: translateY(-2px); box-shadow: 5px 5px 0 var(--lime); }
 .hero-roles { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 34px; }
 .hero-roles span { padding: 8px 12px; border: 1px solid var(--line); border-radius: 99px; font-size: 11px; }
-.hero-lanyard { position: relative; align-self: stretch; min-width: 0; margin-top: -1px; }
+.hero-lanyard {
+  position: relative;
+  align-self: stretch;
+  min-width: 0;
+}
+.hero-lanyard .lanyard-wrapper { transform: translateY(-72px); }
 
 .ticker { display: flex; align-items: center; min-height: 56px; overflow: hidden; color: white; background: var(--blue); border-block: 1px solid var(--ink); }
 .ticker div { display: flex; align-items: center; width: max-content; min-height: 54px; padding: 0; font-size: 12px; font-weight: 800; line-height: 1.2; letter-spacing: .12em; white-space: nowrap; animation: ticker 22s linear infinite; }
@@ -274,6 +279,7 @@ footer { color: white; background: var(--ink); }
   .hero-warp { min-height: 205px; }
   .hero-summary { margin-top: 25px; font-size: 15px; }
   .hero-lanyard { width: 100%; max-width: 540px; margin-inline: auto; }
+  .hero-lanyard .lanyard-wrapper { transform: none; }
   .directory { grid-template-columns: 1fr; gap: 42px; padding-block: 88px; }
   .directory-heading { position: static; }
   .directory-heading h2 { font-size: 50px; }
