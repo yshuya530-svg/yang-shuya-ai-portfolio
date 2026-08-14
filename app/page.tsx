@@ -138,7 +138,7 @@ export default function Home() {
         </div>
         <figure className="hero-portrait" data-reveal>
           <div><img src="/assets/profile/profile-02.jpg" alt="Shay 的个人照片" width="1440" height="2040" loading="eager" fetchPriority="high" /></div>
-          <figcaption>SHAY / PERSONAL SITE</figcaption>
+          <figcaption>电商＋AI</figcaption>
         </figure>
       </section>
 
