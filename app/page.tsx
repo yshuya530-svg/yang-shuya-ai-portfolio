@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import AccordionGallery from "@/components/AccordionGallery";
 import BounceCards from "@/components/BounceCards";
 import DepthCarousel from "@/components/DepthCarousel";
-import ParticleText from "@/components/ParticleText/ParticleText";
+import FoldText from "@/components/FoldText";
 import DriftWall from "@/components/DriftWall";
 import FlowingMenu from "@/components/FlowingMenu";
 import Lanyard from "@/components/Lanyard";
@@ -23,9 +23,9 @@ const ecomShots: MediaItem[] = [
 ];
 
 const agentShots: MediaItem[] = [
+  { image: "/assets/agent/agent-03-player.jpg", alt: "侧边栏音乐播放器组件", caption: "侧边栏组件：玻璃拟态音乐播放器" },
   { image: "/assets/agent/agent-01-transfer.jpg", alt: "仿手机消息与虚拟转账组件", caption: "仿手机组件：消息、语音与虚拟转账交互" },
   { image: "/assets/agent/agent-02-dialogue.jpg", alt: "角色互动场景的对话界面", caption: "角色互动场景：对话、头像和快捷控制" },
-  { image: "/assets/agent/agent-03-player.jpg", alt: "侧边栏音乐播放器组件", caption: "侧边栏组件：玻璃拟态音乐播放器" },
   { image: "/assets/agent/agent-04-world.jpg", alt: "智能体世界设定面板", caption: "信息面板：世界设定、状态与内容层级" },
   { image: "/assets/agent/agent-05-message.jpg", alt: "群聊私聊与搜索面板", caption: "交互模块：群聊、私聊与搜索记录" },
   { image: "/assets/agent/agent-08-regex.jpg", alt: "正则规则管理界面", caption: "正则管理：规则开关、编辑与预览" },
@@ -55,7 +55,6 @@ const schoolShots: MediaItem[] = [
   { image: "/assets/experience/school/school-09.jpg", alt: "远足短视频公开发布页面", caption: "公开发布：远足短视频与传播数据" },
   { image: "/assets/experience/school/school-10.jpg", alt: "远足短视频公开评论", caption: "公开反馈：远足视频评论区" },
   { image: "/assets/experience/school/school-11.jpg", alt: "远足校本课程公开文章", caption: "公开文章：远足拉练校本课程" },
-  { image: "/assets/experience/school/school-12-camera.jpg", alt: "校园活动现场使用的相机", caption: "现场设备：活动影像采集准备" },
   { image: "/assets/experience/school/school-13-womens-day.jpg", alt: "学校三八妇女节活动布置", caption: "妇女节活动：主题场景与视觉布置" },
   { image: "/assets/experience/school/school-14-auditorium.jpg", alt: "学校礼堂活动现场观众席", caption: "礼堂活动：大型活动现场记录" },
   { image: "/assets/experience/school/school-15-gifts.jpg", alt: "妇女节活动鲜花与礼品准备现场", caption: "活动筹备：鲜花礼品与现场执行" },
@@ -82,15 +81,15 @@ const workflow = [
 ];
 
 const ecomFacts = [
-  { title: "我的工作", detail: "产品梳理、前端 UI、AI 工作流和演示交付" },
-  { title: "交付边界", detail: "保留原文证据，不伪造评分，不自动发布" },
-  { title: "技术", detail: "React · TypeScript · FastAPI · pandas · LLM API" },
+  { title: "为什么做", detail: "评论量增长后，运营很难快速判断哪些问题最影响转化、应该先处理什么" },
+  { title: "怎么做", detail: "清洗和分类评论，用原文证据排序痛点，再生成可核验的经营建议与 Listing 优化" },
+  { title: "交付结果", detail: "200 条演示评论形成 34 个高优先级痛点和 7 条待执行建议，并支持报告与 Excel 导出" },
 ];
 
 const agentScopeItems = [
-  { title: "智能体设计", detail: "角色设定、任务边界、Prompt 结构、回复规范" },
-  { title: "前端体验", detail: "信息面板、侧边栏、交互组件和用户路径优化" },
-  { title: "持续迭代", detail: "观察对话反馈，调整 Prompt 和长对话稳定性" },
+  { title: "AI 交付", detail: "角色设定、任务边界、Prompt 结构、回复规范与反馈迭代" },
+  { title: "前端体验", detail: "信息面板、侧边栏、交互组件和界面优化" },
+  { title: "结果验证", detail: "根据真实对话反馈检查长对话稳定性与使用体验" },
 ];
 
 const directoryItems = [
@@ -131,30 +130,25 @@ export default function Home() {
         <div className="hero-copy" data-reveal>
           <p className="eyebrow"><i /> FDE · AI 应用交付 · 前端体验</p>
           <h1 className="hero-title">
-            <ParticleText
-              className="hero-warp"
-              text={"电子商务背景，\n前端与 AI 应用实践。"}
-              color="#191816"
-              highlightColor="#c95d42"
-              particleSize={2.8}
-              density={3}
-              scatter={145}
-              pointerRepel={36}
-              repelRadius={115}
-              fontSize="clamp(3rem, 6.4vw, 6.4rem)"
-              fontWeight={900}
-            />
+            <FoldText className="hero-fold" text="电子商务背景" color="#191816" fontSize="clamp(3rem, 6.4vw, 6.4rem)" fontWeight={900} stagger={0.035} />
+            <FoldText className="hero-fold" text="前端与 AI 应用实践" color="#c95d42" fontSize="clamp(3rem, 6.4vw, 6.4rem)" fontWeight={900} stagger={0.035} />
           </h1>
-          <p className="hero-summary">我是 Shay / 杨舒雅。我关注用户和商家实际遇到的问题，完成需求梳理、AI 工作流、前端界面和演示交付。</p>
+          <p className="hero-summary">我是 Shay / 杨舒雅。我有电子商务背景，关注用户与商家在经营中的真实问题；会梳理需求、分析数据，并用 AI 工作流和前端界面把方案做成可演示、可验证的交付。</p>
           <div className="hero-actions"><a className="button button-secondary" href="#contact">联系 Shay ↗</a><span className="lanyard-action-copy"><b>右侧拖动吊牌</b>松手直接进入项目 ↓</span></div>
-          <div className="hero-roles"><span>需求理解</span><span>AI 应用</span><span>前端 UI</span><span>交付表达</span></div>
+          <div className="hero-roles"><span>电商业务</span><span>用户洞察</span><span>AI 提效</span><span>前端交付</span></div>
         </div>
         <div className="hero-lanyard" data-reveal>
           <Lanyard frontImage="/assets/profile/profile-02.jpg" backImage="/assets/profile/profile-02.jpg" onActivate={() => document.querySelector("#work")?.scrollIntoView({ behavior: "smooth" })} />
         </div>
       </section>
 
-      <div className="ticker" aria-hidden="true"><div>BUSINESS NEEDS <i>✦</i> AI APPLICATION <i>✦</i> FRONTEND UI <i>✦</i> DELIVERY <i>✦</i> BUSINESS NEEDS <i>✦</i> AI APPLICATION <i>✦</i></div></div>
+      <div className="ticker" aria-hidden="true">
+        <div className="ticker__track">
+          {[0, 1].map((copy) => (
+            <span className="ticker__group" key={copy}>BUSINESS NEEDS <i>✦</i> AI APPLICATION <i>✦</i> FRONTEND UI <i>✦</i> DELIVERY <i>✦</i></span>
+          ))}
+        </div>
+      </div>
 
       <section id="directory" className="directory section-shell" data-reveal>
         <div className="directory-heading">
@@ -178,30 +172,30 @@ export default function Home() {
 
         <article className="case section-shell" data-reveal>
           <div className="case-media"><div className="media-label"><span>FEATURED / 01</span><b>ECOMLENS AI</b></div><video controls muted playsInline preload="metadata" poster="/assets/ecomlens/ecomlens-01-overview.png"><source src="/assets/ecomlens/ecomlens-demo.mp4" type="video/mp4" /></video><small>完整界面录屏 · 点击播放</small></div>
-          <div className="case-copy"><div className="case-kicker"><span>AI 经营洞察工作台</span><span>REACT + FASTAPI</span></div><h3>把评论变成可追溯的经营建议和 Listing 优化方案。</h3><p className="case-lead">导入评论后，系统完成清洗、分类、痛点排序、行动建议、Listing 优化和报告导出。结论保留原文证据，运营人员可以核验后再执行。</p><div className="metric-row"><div><strong>200</strong><span>演示评论样本</span></div><div><strong>34</strong><span>高优先级痛点</span></div><div><strong>7</strong><span>待执行建议</span></div></div><FlowingMenu items={ecomFacts} /><a className="text-link" href="https://github.com/yshuya530-svg/EcomLens-AI" target="_blank" rel="noreferrer">查看 GitHub ↗</a></div>
+          <div className="case-copy"><div className="case-kicker"><span>AI 经营洞察工作台</span><span>REACT + FASTAPI</span></div><h3>把分散的评论，变成商家能核验、能执行的经营依据。</h3><p className="case-lead">商家面对大量评论时，很难快速找出影响转化的共性问题。EcomLens AI 从原文证据出发，完成清洗、分类、痛点排序、行动建议、Listing 优化和报告导出，帮助运营人员在执行前核验依据。</p><div className="metric-row"><div><strong>200</strong><span>演示评论样本</span></div><div><strong>34</strong><span>高优先级痛点</span></div><div><strong>7</strong><span>待执行建议</span></div></div><FlowingMenu items={ecomFacts} /><a className="text-link" href="https://github.com/yshuya530-svg/EcomLens-AI" target="_blank" rel="noreferrer">查看 GitHub ↗</a></div>
         </article>
 
         <div className="workflow section-shell" data-reveal><div className="workflow-title"><span>FROM RAW DATA TO ACTION</span><b>端到端工作流</b></div><div className="workflow-track">{workflow.map(([n,title,text]) => <div className="workflow-step" key={n}><span>{n}</span><i /><h4>{title}</h4><p>{text}</p></div>)}</div></div>
 
         <div className="gallery-block section-shell" data-reveal><div className="gallery-heading"><div><span>ECOMLENS / PRODUCT EVIDENCE</span><h3>从概览到报告的 5 个关键界面</h3></div></div><DepthCarousel items={ecomShots} cardWidth={930} cardHeight={450} stageHeight={610} depth={145} spread={92} tilt={8} visibleCards={3} fit="contain" /></div>
 
-        <div className="section-shell project-divider project-divider-spaced" data-reveal><span>PROJECT 02</span><strong>AI 智能体设计与前端体验</strong><p>角色系统、交互体验与持续迭代</p></div>
+        <div className="section-shell project-divider project-divider-spaced" data-reveal><span>PROJECT 02</span><strong>AI 智能体设计与前端体验</strong><p>AI 逻辑、前端呈现与反馈验证</p></div>
 
         <article id="agent-project" className="agent-case section-shell" data-reveal>
-          <div className="agent-copy"><div className="case-kicker"><span>02 / AI AGENT + FRONTEND UX</span><span>HTML · CSS · JS · PROMPT</span></div><h3>设计两个垂直场景智能体，并把平台交互体验一起做完整。</h3><p className="case-lead">我负责角色设定、任务边界、Prompt 结构和回复规范，独立完成信息面板、侧边栏和交互组件的前端优化。根据真实对话反馈持续调整 Prompt 逻辑，提升长对话中的稳定性。</p><div className="agent-outcomes"><div><strong>2</strong><span>垂直场景智能体</span></div><div><strong>10万+</strong><span>真实互动</span></div><div><strong>1000+</strong><span>原平台 + 内容账号累计关注</span></div><div><strong>1万+</strong><span>获赞与收藏</span></div></div><FlowingMenu items={agentScopeItems} /><p className="simulation-note">下方是部分前端实现证据。仿手机只是其中一个组件；其中转账金额和消息内容均为界面模拟。</p></div>
+          <div className="agent-copy"><div className="case-kicker"><span>02 / AI AGENT + FRONTEND UX</span><span>HTML · CSS · JS · PROMPT</span></div><h3>让垂直场景智能体既能稳定回应，也更容易被理解和使用。</h3><p className="case-lead">面向长对话角色互动场景，用户既需要角色设定稳定、任务边界清楚，也需要更直观的信息层级和操作入口。我的工作拆成两条线：AI 交付负责角色设定、Prompt、回复规范和反馈迭代；前端体验负责信息面板、侧边栏、交互组件与界面优化。</p><div className="agent-outcomes"><div><strong>2</strong><span>垂直场景智能体</span></div><div><strong>10万+</strong><span>真实互动</span></div><div><strong>1000+</strong><span>原平台 + 内容账号累计关注</span></div><div><strong>1万+</strong><span>获赞与收藏</span></div></div><FlowingMenu items={agentScopeItems} /><p className="simulation-note">下方是部分前端实现证据。仿手机只是其中一个组件；其中转账金额和消息内容均为界面模拟。</p></div>
           <div className="agent-stage"><StackGallery items={agentShots} /></div>
         </article>
 
-        <div className="section-shell project-divider project-divider-spaced" data-reveal><span>PROJECT 03</span><strong>内容教程与增长实验</strong><p>公开反馈、账号增长与数据复盘</p></div>
+        <div className="section-shell project-divider project-divider-spaced" data-reveal><span>PROJECT 03</span><strong>自媒体内容与增长实验</strong><p>教程内容、爆款验证与账号增长</p></div>
 
         <div id="content-project" className="content-cases section-shell" data-reveal>
-          <article className="content-card content-card-blue"><span className="card-label">产品衍生内容 / 03A</span><h3>把界面改造过程整理成用户能复用的教程。</h3><p>公开分享前端美化过程，用收藏和评论反馈检查教程是否清楚。</p><div className="content-metrics"><div><strong>1.1万</strong><span>浏览</span></div><div><strong>1961</strong><span>点赞</span></div><div><strong>1083</strong><span>收藏</span></div></div><AccordionGallery items={agentXhsShots} tone="blue" /></article>
-          <article className="content-card content-card-coral"><span className="card-label">独立增长实验 / 03B</span><h3>围绕连续选题和数据复盘，完成从 0 到 1800+ 粉丝。</h3><p>观察曝光、互动、主页访问和涨粉曲线，再调整下一轮主题与内容结构。</p><div className="content-metrics"><div><strong>1806</strong><span>总粉丝</span></div><div><strong>5.0万</strong><span>获赞与收藏</span></div><div><strong>93.7%</strong><span>活跃粉丝占比</span></div></div><AccordionGallery items={growthShots} tone="orange" /></article>
+          <article className="content-card content-card-blue"><span className="card-label">产品衍生内容 / 03A</span><h3>帮助缺少前端经验的用户，<br />复用 AI 界面美化方法。</h3><p>面向想优化智能体界面、但不知道如何落地的用户，把改造过程拆成可跟做的步骤，并用收藏与评论检查教程是否清楚。</p><div className="content-metrics"><div><strong>1万</strong><span>总获赞与收藏</span></div><div><strong>50%</strong><span>帖子赞藏下载量破千</span></div><div><strong>破万</strong><span>单篇最高浏览量</span></div></div><AccordionGallery items={agentXhsShots} tone="blue" /></article>
+          <article className="content-card content-card-coral"><span className="card-label">独立增长实验 / 03B</span><h3>一个月从 0 到 1800+ 粉丝：<br />用连续选题与数据复盘验证爆款方向。</h3><p>面向情感与成长内容用户，持续测试选题、标题和内容结构，再根据曝光、互动、主页访问与涨粉曲线调整下一轮方向。</p><div className="content-metrics"><div><strong>1806</strong><span>总粉丝</span></div><div><strong>5.0万</strong><span>获赞与收藏</span></div><div><strong>93.7%</strong><span>活跃粉丝占比</span></div></div><AccordionGallery items={growthShots} tone="orange" /></article>
         </div>
       </section>
 
       <section id="research" className="research">
-        <div className="section-shell research-intro" data-reveal><span className="section-index">02 / DATA RESEARCH</span><div><h2>哪些购买前行为，真的能提示用户有购买意向？</h2><p>我用淘宝行为日志做了一次可解释的购买预测研究。重点是找出有效信号，再把结果翻译成高、中、低意向用户的运营动作。</p></div></div>
+        <div className="section-shell research-intro" data-reveal><span className="section-index">02 / DATA RESEARCH</span><div><h2>哪些购买前行为，真的能提示用户有购买意向？</h2><p>我用淘宝行为日志做了一次可解释的购买预测研究。重点是找出有效信号，再把结果翻译成高、中、低意向用户的运营动作。研究结论可用于辅助人群分层、安排触达优先级，并为优惠和内容策略提供依据。</p></div></div>
         <div className="section-shell research-pipeline" data-reveal><div><span>01</span><b>行为日志</b><p>浏览、收藏、加购、购买</p></div><i>→</i><div><span>02</span><b>用户特征</b><p>加购数、品类多样性等</p></div><i>→</i><div><span>03</span><b>逻辑回归</b><p>预测并解释购买概率</p></div><i>→</i><div><span>04</span><b>分层动作</b><p>按意向匹配不同触达</p></div></div>
         <div className="section-shell research-visual" data-reveal><div className="research-copy"><span>MODEL PERFORMANCE</span><h3>模型能识别购买倾向，也保留了需要继续改进的边界。</h3><p>8477 名平衡样本中，测试集为 1696。Python 模型 AUC 为 0.7602，准确率 67.98%、精确率 74%、召回率 60%。未购买用户识别仍偏弱，因此结果适合辅助分层，不适合自动做最终判断。</p></div><figure><img src="/assets/research/research-performance.png" alt="购买意图模型表现与关键特征图" /><figcaption>模型表现与关键变量 · 按论文数据重绘</figcaption></figure></div>
         <div className="section-shell research-visual research-visual-reverse" data-reveal><div className="research-copy"><span>ACTIONABLE SEGMENTATION</span><h3>加购次数和品类多样性，转成三类可执行人群。</h3><p>加购每增加 1 次，购买优势比约增加 5.6%；浏览品类每增加 1 类，约增加 1.3%。据此把用户分为高、中、低意向，并匹配不同的提醒、优惠和内容触达。</p></div><figure><img src="/assets/research/research-segmentation.png" alt="高中低购买意向用户分层策略图" /><figcaption>用户意向分层与运营动作 · 按论文结论重绘</figcaption></figure></div>
@@ -209,16 +203,17 @@ export default function Home() {
 
       <section id="experience" className="experience section-shell">
         <div className="section-heading" data-reveal><div><span className="section-index">03 / INTERNSHIPS · 实习</span><h2>两段实习，两个真实的<br />内容交付现场。</h2></div></div>
-        <article className="experience-case" data-reveal><div className="experience-copy"><span>2026 / SCHOOL COMMUNICATION</span><h3>玉林新世纪高级中学</h3><p>参与校园活动内容策划、现场采集、短视频与公众号编辑。从活动现场到公开成稿，留下完整交付证据。</p><div className="experience-tags"><span>现场采集</span><span>短视频</span><span>图文编辑</span><span>活动协作</span></div></div><DriftWall items={schoolShots} /></article>
-        <article className="experience-case experience-case-alt" data-reveal><div className="experience-copy"><span>2025 / MEDIA DELIVERY</span><h3>微视河南文化传媒中心</h3><p>参与公开内容采编、平台风格适配与多渠道分发。作者署名、阅读量和转载页面构成可核验的工作记录。</p><div className="experience-tags"><span>内容采编</span><span>平台适配</span><span>多渠道分发</span><span>公开传播</span></div></div><BounceCards items={weishiShots} /></article>
+        <article className="experience-case" data-reveal><div className="experience-copy"><span>2026 / SCHOOL COMMUNICATION</span><h3>玉林新世纪高级中学</h3><p>校园活动信息密集、交付时间集中，需要把现场素材快速整理成对外内容。我参与内容策划、摄影、短视频与公众号编辑，从现场采集到公开成稿完成整套内容交付。</p><div className="experience-tags"><span>内容策划</span><span>视觉与摄影</span><span>短视频</span><span>公众号交付</span></div></div><DriftWall items={schoolShots} /></article>
+        <article className="experience-case experience-case-alt" data-reveal><div className="experience-copy"><span>2025 / MEDIA DELIVERY</span><h3>微视河南文化传媒中心</h3><p>同一批新闻和活动素材，需要适配不同平台的表达方式与发布节奏。我参与内容采编、平台风格适配和多渠道分发，并用署名、阅读量与转载页面留下可核验的交付记录。</p><div className="experience-tags"><span>内容采编</span><span>平台适配</span><span>多渠道分发</span><span>交付留痕</span></div></div><BounceCards items={weishiShots} /></article>
+        <p className="experience-transfer" data-reveal><strong>能力迁移：</strong>两段实习训练了我在时间有限、素材复杂的情况下完成需求理解、视觉取舍、内容制作与公开交付；这些能力也能迁移到电商内容生产，以及由 AI 辅助、人工核验的内容工作流。</p>
       </section>
 
       <section id="about" className="about section-shell" data-reveal>
         <figure className="about-photo"><div><img src="/assets/profile/profile-01.jpg" alt="Shay 的生活照" /></div><figcaption>OFF DUTY / STILL CURIOUS</figcaption></figure>
-        <div className="about-copy"><span className="section-index">04 / ABOUT SHAY</span><h2>把真实业务需求，<br />做成可用、可核验的 AI 应用。</h2><p>我习惯先理解业务、用户和交付目标，再把方案做成清楚的界面与可演示产品。正在寻找 FDE、AI 应用交付或偏产品的前端机会。</p><div className="skill-cloud"><span>React</span><span>TypeScript</span><span>Python</span><span>FastAPI</span><span>Prompt Design</span><span>UI Motion</span><span>Content Ops</span></div></div>
+        <div className="about-copy"><span className="section-index">04 / ABOUT SHAY</span><h2>懂电商业务，<br />也能把 AI 做成可用、可验证的解决方案。</h2><p>我从用户需求、商家经营问题和交付目标出发，结合数据分析、AI 工作流与前端体验，把评论洞察、内容增长和业务流程做成清楚的工具与演示。正在寻找电商运营、AI 产品运营或 AI 应用交付方向的机会。</p><div className="skill-cloud"><span>电商业务</span><span>用户洞察</span><span>数据分析</span><span>AI Workflow</span><span>React</span><span>TypeScript</span><span>Content Ops</span></div></div>
       </section>
 
-      <footer id="contact"><div className="section-shell footer-main"><div className="footer-intro"><span>LET&apos;S BUILD SOMETHING USEFUL</span><h2>如果你在寻找<br />能理解需求、完成界面，<br /><em>也能把 AI 应用交付出来的人，</em><br />欢迎来聊。</h2></div><LineSidebar items={contactItems} /></div><div className="section-shell footer-bottom"><span>© 2026 SHAY / YANG SHUYA</span><span>AI APPLICATION DELIVERY · FRONTEND UI</span><a href="#top">BACK TO TOP ↑</a></div></footer>
+      <footer id="contact"><div className="section-shell footer-main"><div className="footer-intro"><span>LET&apos;S BUILD SOMETHING USEFUL</span><h2>有电商、AI 应用<br />或前端交付需求？<br /><em>欢迎来聊。</em></h2></div><LineSidebar items={contactItems} /></div><div className="section-shell footer-bottom"><span>© 2026 SHAY / YANG SHUYA</span><span>E-COMMERCE · AI APPLICATION · FRONTEND DELIVERY</span><a href="#top">BACK TO TOP ↑</a></div></footer>
     </main>
   );
 }

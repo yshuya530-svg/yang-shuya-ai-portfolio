@@ -22,7 +22,7 @@ test("server-renders Shay portfolio content", async () => {
   const html = await response.text();
   assert.match(html, /<strong>Shay<\/strong>/);
   assert.match(html, /ECOMLENS AI/);
-  assert.match(html, /两个垂直场景智能体/);
+  assert.match(html, /AI 交付负责角色设定/);
   assert.match(html, /原平台 \+ 内容账号累计关注/);
   assert.match(html, /哪些购买前行为/);
   assert.match(html, /\/assets\/profile\/profile-01\.jpg/);
@@ -41,10 +41,10 @@ test("keeps all approved portfolio assets and public boundaries", async () => {
   const mediaFiles = assetFiles.filter((file) => /\.(?:jpg|png|mp4)$/i.test(file));
   const referencedAssets = new Set(page.match(/\/assets\/[^"]+/g) ?? []);
   assert.equal(mediaFiles.length, 49);
-  assert.equal(referencedAssets.size, 46);
+  assert.equal(referencedAssets.size, 45);
   assert.doesNotMatch(page, /agent-06-world-alt\.jpg|agent-07-player-alt\.jpg|agent-09-transfer-alt\.jpg/);
   assert.match(page, /school-16-shay-shooting\.jpg/);
-  assert.match(page, /ParticleText/);
+  assert.match(page, /FoldText/);
   assert.match(page, /界面模拟/);
   assert.match(page, /lxyg0228/);
   assert.match(page, /github\.com\/yshuya530-svg\/EcomLens-AI/);

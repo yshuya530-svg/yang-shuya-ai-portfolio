@@ -8,7 +8,7 @@ import "./StackGallery.css";
 type StackItem = { image: string; alt: string; caption: string };
 
 export default function StackGallery({ items }: { items: StackItem[] }) {
-  const [order, setOrder] = useState(() => items.map((_, index) => index));
+  const [order, setOrder] = useState(() => items.map((_, index) => index).reverse());
   const [lightbox, setLightbox] = useState<number | null>(null);
   const lightboxItems = useMemo<LightboxItem[]>(() => items, [items]);
 
@@ -100,7 +100,7 @@ function StackCard({ item, itemIndex, depth, total, isTop, onSendBack, onOpen }:
       }}
     >
       <div className="stack-card__media"><img src={item.image} alt={item.alt} draggable="false" /></div>
-      <div className="stack-card__caption"><span>{String(itemIndex + 1).padStart(2, "0")}</span><p>{item.caption}</p><b>{isTop ? "点击放大 ↗" : ""}</b></div>
+      <div className="stack-card__caption"><span>{String(itemIndex + 1).padStart(2, "0")}</span><p>{item.caption}</p></div>
     </motion.article>
   );
 }

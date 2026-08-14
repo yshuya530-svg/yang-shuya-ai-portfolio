@@ -224,9 +224,9 @@ function Band({ mobile, frontImage, backImage, onActivate }: BandProps) {
         <RigidBody position={[1, 0, 0]} ref={joint2} {...segmentProps}><BallCollider args={[.1]} /></RigidBody>
         <RigidBody position={[1.5, 0, 0]} ref={joint3} {...segmentProps}><BallCollider args={[.1]} /></RigidBody>
         <RigidBody position={[2, 0, 0]} ref={card} {...segmentProps} type={dragged ? "kinematicPosition" : "dynamic"}>
-          <CuboidCollider args={[.8, 1.125, .01]} />
+          <CuboidCollider args={[.9, 1.265, .01]} />
           <group
-            scale={2.25}
+            scale={2.5}
             position={[0, -1.2, -.05]}
             onPointerOver={() => setHovered(true)}
             onPointerOut={() => setHovered(false)}

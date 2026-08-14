@@ -41,3 +41,10 @@ yarn-error.log*
 /.npm-cache/
 /tmp/
 /.dev-server.*.log
+
+# local Codex preview/QA artifacts
+/.codex-*.log
+/.codex-*.err.log
+/.codex-*.out.log
+/.codex-package-*/
+/portfolio-site-*.tar.gz

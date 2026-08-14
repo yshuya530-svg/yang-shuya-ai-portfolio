@@ -10,7 +10,7 @@ type DriftSlot = { item: DriftItem | null; originalIndex: number | null };
 const smartCrop = (image: string) => {
   if (image.endsWith("school-06.jpg") || image.endsWith("school-07.jpg")) return "signature";
   if (image.endsWith("school-09.jpg")) return "video-center";
-  if (image.endsWith("school-12-camera.jpg")) return "camera";
+  if (image.endsWith("school-13-womens-day.jpg")) return "womens-day";
   if (image.endsWith("school-15-gifts.jpg")) return "gifts";
   if (image.endsWith("school-16-shay-shooting.jpg")) return "shay-shooting";
   return undefined;
