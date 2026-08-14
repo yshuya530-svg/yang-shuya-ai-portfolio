@@ -213,7 +213,7 @@ export default function Home() {
         <div className="about-copy"><span className="section-index">04 / ABOUT SHAY</span><h2>懂电商业务，<br />也能把 AI 做成可用、可验证的解决方案。</h2><p>我从用户需求、商家经营问题和交付目标出发，结合数据分析、AI 工作流与前端体验，把评论洞察、内容增长和业务流程做成清楚的工具与演示。正在寻找电商运营、AI 产品运营或 AI 应用交付方向的机会。</p><div className="skill-cloud"><span>电商业务</span><span>用户洞察</span><span>数据分析</span><span>AI Workflow</span><span>React</span><span>TypeScript</span><span>Content Ops</span></div></div>
       </section>
 
-      <footer id="contact"><div className="section-shell footer-main"><div className="footer-intro"><span>LET&apos;S BUILD SOMETHING USEFUL</span><h2>有电商、AI 应用<br />或前端交付需求？<br /><em>欢迎来聊。</em></h2></div><LineSidebar items={contactItems} /></div><div className="section-shell footer-bottom"><span>© 2026 SHAY / YANG SHUYA</span><span>E-COMMERCE · AI APPLICATION · FRONTEND DELIVERY</span><a href="#top">BACK TO TOP ↑</a></div></footer>
+      <footer id="contact"><div className="section-shell footer-main"><div className="footer-intro"><span>OPEN TO OPPORTUNITIES</span><h2>如果我的经历<br />与岗位需求契合，<br /><em>期待有机会进一步交流。</em></h2></div><LineSidebar items={contactItems} /></div><div className="section-shell footer-bottom"><span>© 2026 SHAY / YANG SHUYA</span><span>E-COMMERCE · AI APPLICATION · FRONTEND DELIVERY</span><a href="#top">BACK TO TOP ↑</a></div></footer>
     </main>
   );
 }
