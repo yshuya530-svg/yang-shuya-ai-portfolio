@@ -59,7 +59,7 @@ main { width: 100%; overflow-x: clip; overflow-y: visible; }
   min-height: calc(100vh - 76px);
   padding-block: 0 48px;
 }
-.hero-copy { position: relative; z-index: 2; container-type: inline-size; padding-top: clamp(70px, 7vw, 108px); }
+.hero-copy { position: relative; z-index: 2; container-type: inline-size; padding-top: 16px; }
 .eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 28px; }
 .eyebrow i { width: 9px; height: 9px; border-radius: 50%; background: #22ad74; box-shadow: 0 0 0 5px rgba(34,173,116,.12); }
 .hero-title { width: 100%; max-width: 760px; margin: 0; }
@@ -73,7 +73,7 @@ main { width: 100%; overflow-x: clip; overflow-y: visible; }
 .button:hover { transform: translateY(-2px); box-shadow: 5px 5px 0 var(--lime); }
 .hero-roles { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 34px; }
 .hero-roles span { padding: 8px 12px; border: 1px solid var(--line); border-radius: 99px; font-size: 11px; }
-.hero-portrait { position: relative; top: 40px; z-index: 0; justify-self: end; align-self: center; width: min(68%, 390px); margin: 108px 96px 78px 0; }
+.hero-portrait { position: relative; top: 0; z-index: 0; justify-self: end; align-self: center; width: min(68%, 390px); margin: 36px 96px 78px 0; }
 .hero-portrait > div { position: relative; z-index: 1; padding: 12px; background: var(--paper-2); border: 1px solid var(--ink); box-shadow: 10px 10px 0 var(--orange), 18px 18px 0 var(--blue); transform: rotate(5deg); transform-origin: center; }
 .hero-portrait img { display: block; width: 100%; height: auto; object-fit: contain; border: 1px solid var(--ink); }
 .hero-portrait figcaption { position: absolute; z-index: 2; top: 20px; right: -20px; margin: 0; padding: 12px 14px; color: var(--ink); background: var(--lime); border: 1px solid var(--ink); box-shadow: 5px 5px 0 var(--ink); font-size: 11px; font-weight: 900; letter-spacing: .1em; transform: rotate(2deg); }
@@ -281,7 +281,7 @@ footer { color: white; background: var(--ink); }
     display: block;
     width: 100%;
     white-space: normal;
-    --fold-text-font-size: clamp(1.2rem, 5.4vw, 1.55rem) !important;
+    --fold-text-font-size: clamp(2rem, 8.4vw, 2.35rem) !important;
   }
   .hero-summary { margin-top: 25px; font-size: 15px; }
   .hero-portrait { top: 0; justify-self: center; width: min(64vw, 280px); margin: 58px auto 68px; }
@@ -298,6 +298,8 @@ footer { color: white; background: var(--ink); }
   .positioning-grid strong { font-size: 18px; }
   .section-heading { padding-top: 72px; margin-bottom: 44px; }
   .section-heading h2, .positioning h2, .research-intro h2, .about-copy h2 { font-size: 40px; }
+  #work .section-heading h2, #experience .section-heading h2 { font-size: 36px; text-wrap: balance; }
+  #work .section-heading h2 br, #experience .section-heading h2 br { display: none; }
   .case-copy h3, .gallery-heading h3, .agent-copy h3, .content-card h3, .research-copy h3, .experience-copy h3 { font-size: 34px; }
   .project-divider { grid-template-columns: 72px 1fr; gap: 12px; margin-bottom: 28px; }
   .project-divider-spaced { margin-top: 66px; }
