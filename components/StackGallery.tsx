@@ -99,7 +99,7 @@ function StackCard({ item, itemIndex, depth, total, isTop, onSendBack, onOpen }:
         if (event.key === "ArrowRight" || event.key === " ") { event.preventDefault(); onSendBack(); }
       }}
     >
-      <div className="stack-card__media"><img src={item.image} alt={item.alt} loading="lazy" decoding="async" draggable="false" /></div>
+      <div className="stack-card__media"><img src={item.image} alt={item.alt} draggable="false" /></div>
       <div className="stack-card__caption"><span>{String(itemIndex + 1).padStart(2, "0")}</span><p>{item.caption}</p></div>
     </motion.article>
   );

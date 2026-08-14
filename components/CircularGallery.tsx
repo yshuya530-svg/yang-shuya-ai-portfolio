@@ -63,7 +63,7 @@ export default function CircularGallery({ items }: { items: CircularItem[] }) {
                 } as React.CSSProperties}
                 onClick={() => offset === 0 ? setLightbox(index) : setActive(index)}
               >
-                <span className="circular-image"><img src={item.image} alt={item.alt} loading="lazy" decoding="async" /></span>
+                <span className="circular-image"><img src={item.image} alt={item.alt} loading="lazy" /></span>
                 <span className="circular-caption"><b>{String(index + 1).padStart(2, "0")}</b>{item.caption}</span>
               </button>
             );

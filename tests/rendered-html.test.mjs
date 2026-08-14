@@ -25,7 +25,7 @@ test("server-renders Shay portfolio content", async () => {
   assert.match(html, /AI 交付负责角色设定/);
   assert.match(html, /原平台 \+ 内容账号累计关注/);
   assert.match(html, /哪些购买前行为/);
-  assert.match(html, /\/assets\/profile\/profile-01\.webp/);
+  assert.match(html, /\/assets\/profile\/profile-01\.jpg/);
   assert.match(html, /\/assets\/ecomlens\/ecomlens-demo\.mp4/);
   assert.doesNotMatch(html, /yang-shuya-resume\.pdf|保密项目/);
 });
@@ -43,7 +43,7 @@ test("keeps all approved portfolio assets and public boundaries", async () => {
   assert.equal(mediaFiles.length, 49);
   assert.equal(referencedAssets.size, 45);
   assert.doesNotMatch(page, /agent-06-world-alt\.jpg|agent-07-player-alt\.jpg|agent-09-transfer-alt\.jpg/);
-  assert.match(page, /school-16-shay-shooting\.webp/);
+  assert.match(page, /school-16-shay-shooting\.jpg/);
   assert.match(page, /FoldText/);
   assert.match(page, /界面模拟/);
   assert.match(page, /lxyg0228/);

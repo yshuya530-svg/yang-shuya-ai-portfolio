@@ -50,7 +50,7 @@ export default function MediaLightbox({ items, active, onChange }: Props) {
         ←
       </button>
       <figure>
-        <img src={item.image} alt={item.alt} decoding="async" />
+        <img src={item.image} alt={item.alt} />
         <figcaption>
           <span>{String(active + 1).padStart(2, "0")} / {String(items.length).padStart(2, "0")}</span>
           {item.caption}
