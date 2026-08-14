@@ -196,7 +196,7 @@ export default function DepthCarousel({
                 else moveTo(index);
               }}
             >
-              <img src={item.image} alt={item.alt} draggable={false} style={{ objectFit: fit }} />
+              <img src={item.image} alt={item.alt} loading="lazy" decoding="async" draggable={false} style={{ objectFit: fit }} />
             </button>
           ))}
         </div>

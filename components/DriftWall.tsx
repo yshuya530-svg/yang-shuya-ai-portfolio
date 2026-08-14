@@ -45,7 +45,7 @@ export default function DriftWall({ items }: { items: DriftItem[] }) {
                       aria-label={`查看原图：${slot.item.caption}`}
                       tabIndex={copyIndex === 1 ? -1 : 0}
                     >
-                      <span className="drift-card__media"><img src={slot.item.image} alt={copyIndex === 0 ? slot.item.alt : ""} loading="lazy" /></span>
+                      <span className="drift-card__media"><img src={slot.item.image} alt={copyIndex === 0 ? slot.item.alt : ""} loading="lazy" decoding="async" /></span>
                       <span className="drift-card__caption">{slot.item.caption}</span>
                     </button>
                   ) : (

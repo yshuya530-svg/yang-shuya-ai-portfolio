@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { headers } from "next/headers";
 import "./globals.css";
 
-const title = "Shay｜FDE、AI 应用交付与前端 UI 作品集";
-const description = "Shay（杨舒雅）的作品集：EcomLens AI、AI 智能体与前端体验、内容增长实验、数据研究和真实交付证据。";
+const title = "Shay｜个人简历网站";
+const description = "Shay 的个人简历网站：包括 EcomLens AI、AI 智能体与前端体验、内容增长实验、数据研究和真实交付经历。";
 
 export async function generateMetadata(): Promise<Metadata> {
   const requestHeaders = await headers();

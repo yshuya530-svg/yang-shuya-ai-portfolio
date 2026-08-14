@@ -43,7 +43,7 @@ export default function BounceCards({ items }: { items: BounceItem[] }) {
                 onFocus={() => setActive(index)}
                 onClick={() => index === active ? setLightbox(index) : setActive(index)}
               >
-                <span className="bounce-card__image"><img src={item.image} alt={item.alt} loading="lazy" /></span>
+                <span className="bounce-card__image"><img src={item.image} alt={item.alt} loading="lazy" decoding="async" /></span>
                 <span className="bounce-card__caption"><b>{String(index + 1).padStart(2, "0")}</b>{item.caption}</span>
               </button>
             );

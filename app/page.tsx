@@ -1,13 +1,11 @@
 "use client";
 
-import { useEffect } from "react";
 import AccordionGallery from "@/components/AccordionGallery";
 import BounceCards from "@/components/BounceCards";
 import DepthCarousel from "@/components/DepthCarousel";
 import FoldText from "@/components/FoldText";
 import DriftWall from "@/components/DriftWall";
 import FlowingMenu from "@/components/FlowingMenu";
-import Lanyard from "@/components/Lanyard";
 import LineSidebar from "@/components/LineSidebar";
 import SplashCursor from "@/components/SplashCursor";
 import StackGallery from "@/components/StackGallery";
@@ -23,53 +21,53 @@ const ecomShots: MediaItem[] = [
 ];
 
 const agentShots: MediaItem[] = [
-  { image: "/assets/agent/agent-03-player.jpg", alt: "侧边栏音乐播放器组件", caption: "侧边栏组件：玻璃拟态音乐播放器" },
-  { image: "/assets/agent/agent-01-transfer.jpg", alt: "仿手机消息与虚拟转账组件", caption: "仿手机组件：消息、语音与虚拟转账交互" },
-  { image: "/assets/agent/agent-02-dialogue.jpg", alt: "角色互动场景的对话界面", caption: "角色互动场景：对话、头像和快捷控制" },
-  { image: "/assets/agent/agent-04-world.jpg", alt: "智能体世界设定面板", caption: "信息面板：世界设定、状态与内容层级" },
-  { image: "/assets/agent/agent-05-message.jpg", alt: "群聊私聊与搜索面板", caption: "交互模块：群聊、私聊与搜索记录" },
-  { image: "/assets/agent/agent-08-regex.jpg", alt: "正则规则管理界面", caption: "正则管理：规则开关、编辑与预览" },
+  { image: "/assets/agent/agent-03-player.webp", alt: "侧边栏音乐播放器组件", caption: "侧边栏组件：玻璃拟态音乐播放器" },
+  { image: "/assets/agent/agent-01-transfer.webp", alt: "仿手机消息与虚拟转账组件", caption: "仿手机组件：消息、语音与虚拟转账交互" },
+  { image: "/assets/agent/agent-02-dialogue.webp", alt: "角色互动场景的对话界面", caption: "角色互动场景：对话、头像和快捷控制" },
+  { image: "/assets/agent/agent-04-world.webp", alt: "智能体世界设定面板", caption: "信息面板：世界设定、状态与内容层级" },
+  { image: "/assets/agent/agent-05-message.webp", alt: "群聊私聊与搜索面板", caption: "交互模块：群聊、私聊与搜索记录" },
+  { image: "/assets/agent/agent-08-regex.webp", alt: "正则规则管理界面", caption: "正则管理：规则开关、编辑与预览" },
 ];
 
 const agentXhsShots: MediaItem[] = [
-  { image: "/assets/xhs-agent/xhs-agent-03-profile.jpg", alt: "上弦月小红书主页", caption: "内容主页：智能体界面改造的公开分享记录" },
-  { image: "/assets/xhs-agent/xhs-agent-01-post.jpg", alt: "小红书界面美化分享作品数据", caption: "教程作品：1.1 万浏览、1961 赞、1083 收藏" },
-  { image: "/assets/xhs-agent/xhs-agent-02-comments.jpg", alt: "小红书教程评论反馈", caption: "评论反馈：用户按教程完成界面美化" },
+  { image: "/assets/xhs-agent/xhs-agent-03-profile.webp", alt: "上弦月小红书主页", caption: "内容主页：智能体界面改造的公开分享记录" },
+  { image: "/assets/xhs-agent/xhs-agent-01-post.webp", alt: "小红书界面美化分享作品数据", caption: "教程作品：1.1 万浏览、1961 赞、1083 收藏" },
+  { image: "/assets/xhs-agent/xhs-agent-02-comments.webp", alt: "小红书教程评论反馈", caption: "评论反馈：用户按教程完成界面美化" },
 ];
 
 const growthShots: MediaItem[] = [
-  { image: "/assets/xhs-growth/xhs-growth-01-profile.jpg", alt: "Yasmin 小红书主页", caption: "独立账号：1806 粉丝、5 万获赞与收藏" },
-  { image: "/assets/xhs-growth/xhs-growth-02-posts.jpg", alt: "小红书系列内容作品", caption: "连续选题：系列内容形成稳定浏览与点赞" },
-  { image: "/assets/xhs-growth/xhs-growth-03-fans.jpg", alt: "小红书三十日粉丝数据", caption: "30 日粉丝曲线：新增 1905，沉淀 1806" },
-  { image: "/assets/xhs-growth/xhs-growth-04-account.jpg", alt: "小红书账号诊断数据", caption: "账号诊断：曝光、观看、互动和主页访问" },
+  { image: "/assets/xhs-growth/xhs-growth-01-profile.webp", alt: "Yasmin 小红书主页", caption: "独立账号：1806 粉丝、5 万获赞与收藏" },
+  { image: "/assets/xhs-growth/xhs-growth-02-posts.webp", alt: "小红书系列内容作品", caption: "连续选题：系列内容形成稳定浏览与点赞" },
+  { image: "/assets/xhs-growth/xhs-growth-03-fans.webp", alt: "小红书三十日粉丝数据", caption: "30 日粉丝曲线：新增 1905，沉淀 1806" },
+  { image: "/assets/xhs-growth/xhs-growth-04-account.webp", alt: "小红书账号诊断数据", caption: "账号诊断：曝光、观看、互动和主页访问" },
 ];
 
 const schoolShots: MediaItem[] = [
-  { image: "/assets/experience/school/school-01.jpg", alt: "学校远足拉练活动全景", caption: "远足拉练：大型活动全景记录" },
-  { image: "/assets/experience/school/school-02.jpg", alt: "远足拉练活动开场表演", caption: "活动开场：现场内容采集" },
-  { image: "/assets/experience/school/school-03.jpg", alt: "学校植树节活动合影", caption: "植树节：活动执行与传播素材" },
-  { image: "/assets/experience/school/school-04.jpg", alt: "远足拉练学生队伍", caption: "远足拉练：队伍行进现场" },
-  { image: "/assets/experience/school/school-05.jpg", alt: "最美朗读者活动颁奖", caption: "朗读者决赛：颁奖与活动记录" },
-  { image: "/assets/experience/school/school-06.jpg", alt: "植树活动公众号编辑署名", caption: "公众号交付：植树活动推文与编辑署名" },
-  { image: "/assets/experience/school/school-07.jpg", alt: "朗读活动公众号编辑署名", caption: "公众号交付：朗读活动推文与编辑署名" },
-  { image: "/assets/experience/school/school-09.jpg", alt: "远足短视频公开发布页面", caption: "公开发布：远足短视频与传播数据" },
-  { image: "/assets/experience/school/school-10.jpg", alt: "远足短视频公开评论", caption: "公开反馈：远足视频评论区" },
-  { image: "/assets/experience/school/school-11.jpg", alt: "远足校本课程公开文章", caption: "公开文章：远足拉练校本课程" },
-  { image: "/assets/experience/school/school-13-womens-day.jpg", alt: "学校三八妇女节活动布置", caption: "妇女节活动：主题场景与视觉布置" },
-  { image: "/assets/experience/school/school-14-auditorium.jpg", alt: "学校礼堂活动现场观众席", caption: "礼堂活动：大型活动现场记录" },
-  { image: "/assets/experience/school/school-15-gifts.jpg", alt: "妇女节活动鲜花与礼品准备现场", caption: "活动筹备：鲜花礼品与现场执行" },
-  { image: "/assets/experience/school/school-16-shay-shooting.jpg", alt: "Shay 在校园远足活动现场拍摄", caption: "现场采集：活动行进中的摄影记录" },
+  { image: "/assets/experience/school/school-01.webp", alt: "学校远足拉练活动全景", caption: "远足拉练：大型活动全景记录" },
+  { image: "/assets/experience/school/school-02.webp", alt: "远足拉练活动开场表演", caption: "活动开场：现场内容采集" },
+  { image: "/assets/experience/school/school-03.webp", alt: "学校植树节活动合影", caption: "植树节：活动执行与传播素材" },
+  { image: "/assets/experience/school/school-04.webp", alt: "远足拉练学生队伍", caption: "远足拉练：队伍行进现场" },
+  { image: "/assets/experience/school/school-05.webp", alt: "最美朗读者活动颁奖", caption: "朗读者决赛：颁奖与活动记录" },
+  { image: "/assets/experience/school/school-06.webp", alt: "植树活动公众号编辑署名", caption: "公众号交付：植树活动推文与编辑署名" },
+  { image: "/assets/experience/school/school-07.webp", alt: "朗读活动公众号编辑署名", caption: "公众号交付：朗读活动推文与编辑署名" },
+  { image: "/assets/experience/school/school-09.webp", alt: "远足短视频公开发布页面", caption: "公开发布：远足短视频与传播数据" },
+  { image: "/assets/experience/school/school-10.webp", alt: "远足短视频公开评论", caption: "公开反馈：远足视频评论区" },
+  { image: "/assets/experience/school/school-11.webp", alt: "远足校本课程公开文章", caption: "公开文章：远足拉练校本课程" },
+  { image: "/assets/experience/school/school-13-womens-day.webp", alt: "学校三八妇女节活动布置", caption: "妇女节活动：主题场景与视觉布置" },
+  { image: "/assets/experience/school/school-14-auditorium.webp", alt: "学校礼堂活动现场观众席", caption: "礼堂活动：大型活动现场记录" },
+  { image: "/assets/experience/school/school-15-gifts.webp", alt: "妇女节活动鲜花与礼品准备现场", caption: "活动筹备：鲜花礼品与现场执行" },
+  { image: "/assets/experience/school/school-16-shay-shooting.webp", alt: "Shay 在校园远足活动现场拍摄", caption: "现场采集：活动行进中的摄影记录" },
 ];
 
 const weishiShots: MediaItem[] = [
-  { image: "/assets/experience/weishi/weishi-01.jpg", alt: "微视河南文化传媒中心主页", caption: "官方账号：公开内容主页" },
-  { image: "/assets/experience/weishi/weishi-02.jpg", alt: "微视河南公开文章标题与署名", caption: "内容采编：公开文章标题与作者署名" },
-  { image: "/assets/experience/weishi/weishi-03.jpg", alt: "微视河南文章阅读量与署名", caption: "传播结果：102468 阅读与来源署名" },
-  { image: "/assets/experience/weishi/weishi-04.jpg", alt: "搜狐新闻转载页面", caption: "多平台分发：搜狐新闻转载" },
-  { image: "/assets/experience/weishi/weishi-05.jpg", alt: "顶端新闻转载页面", caption: "多平台分发：顶端新闻转载" },
-  { image: "/assets/experience/weishi/weishi-06.jpg", alt: "小红书与抖音文案策划记录", caption: "内容策划：平台风格文案与选题记录" },
-  { image: "/assets/experience/weishi/weishi-07.jpg", alt: "中医活动公开报道", caption: "内容采编：公开活动报道记录" },
-  { image: "/assets/experience/weishi/weishi-08.jpg", alt: "微视河南视频号内容矩阵", caption: "内容矩阵：视频号多类型选题" },
+  { image: "/assets/experience/weishi/weishi-01.webp", alt: "微视河南文化传媒中心主页", caption: "官方账号：公开内容主页" },
+  { image: "/assets/experience/weishi/weishi-02.webp", alt: "微视河南公开文章标题与署名", caption: "内容采编：公开文章标题与作者署名" },
+  { image: "/assets/experience/weishi/weishi-03.webp", alt: "微视河南文章阅读量与署名", caption: "传播结果：102468 阅读与来源署名" },
+  { image: "/assets/experience/weishi/weishi-04.webp", alt: "搜狐新闻转载页面", caption: "多平台分发：搜狐新闻转载" },
+  { image: "/assets/experience/weishi/weishi-05.webp", alt: "顶端新闻转载页面", caption: "多平台分发：顶端新闻转载" },
+  { image: "/assets/experience/weishi/weishi-06.webp", alt: "小红书与抖音文案策划记录", caption: "内容策划：平台风格文案与选题记录" },
+  { image: "/assets/experience/weishi/weishi-07.webp", alt: "中医活动公开报道", caption: "内容采编：公开活动报道记录" },
+  { image: "/assets/experience/weishi/weishi-08.webp", alt: "微视河南视频号内容矩阵", caption: "内容矩阵：视频号多类型选题" },
 ];
 
 const workflow = [
@@ -106,40 +104,29 @@ const contactItems = [
 ];
 
 export default function Home() {
-  useEffect(() => {
-    const nodes = document.querySelectorAll<HTMLElement>("[data-reveal]");
-    const observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        (entry.target as HTMLElement).dataset.visible = "true";
-        observer.unobserve(entry.target);
-      }
-    }), { threshold: .08 });
-    nodes.forEach((node) => observer.observe(node));
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <main id="top">
       <SplashCursor />
       <header className="site-header">
-        <a className="wordmark" href="#top"><strong>Shay</strong><span>PORTFOLIO / 2026</span></a>
+        <a className="wordmark" href="#top"><strong>Shay</strong><span>个人简历网站 / 2026</span></a>
         <nav aria-label="主导航"><a href="#work">项目</a><a href="#research">研究</a><a href="#experience">实习</a><a className="nav-cta" href="#contact">联系我 ↗</a></nav>
       </header>
 
       <section className="hero section-shell">
         <div className="hero-copy" data-reveal>
-          <p className="eyebrow"><i /> FDE · AI 应用交付 · 前端体验</p>
+          <p className="eyebrow"><i /> SHAY · 个人简历网站</p>
           <h1 className="hero-title">
             <FoldText className="hero-fold" text="电子商务背景" color="#191816" fontSize="clamp(3rem, 6.4vw, 6.4rem)" fontWeight={900} stagger={0.035} />
             <FoldText className="hero-fold" text="前端与 AI 应用实践" color="#c95d42" fontSize="clamp(3rem, 6.4vw, 6.4rem)" fontWeight={900} stagger={0.035} />
           </h1>
           <p className="hero-summary">我是 Shay / 杨舒雅。我有电子商务背景，关注用户与商家在经营中的真实问题；会梳理需求、分析数据，并用 AI 工作流和前端界面把方案做成可演示、可验证的交付。</p>
-          <div className="hero-actions"><a className="button button-secondary" href="#contact">联系 Shay ↗</a><span className="lanyard-action-copy"><b>右侧拖动吊牌</b>松手直接进入项目 ↓</span></div>
+          <div className="hero-actions"><a className="button button-secondary" href="#contact">联系 Shay ↗</a></div>
           <div className="hero-roles"><span>电商业务</span><span>用户洞察</span><span>AI 提效</span><span>前端交付</span></div>
         </div>
-        <div className="hero-lanyard" data-reveal>
-          <Lanyard frontImage="/assets/profile/profile-02.jpg" backImage="/assets/profile/profile-02.jpg" onActivate={() => document.querySelector("#work")?.scrollIntoView({ behavior: "smooth" })} />
-        </div>
+        <figure className="hero-portrait">
+          <div><img src="/assets/profile/profile-02.webp" alt="Shay 的个人照片" width="1440" height="2040" loading="eager" fetchPriority="high" decoding="async" /></div>
+          <figcaption>SHAY / PERSONAL SITE</figcaption>
+        </figure>
       </section>
 
       <div className="ticker" aria-hidden="true">
@@ -156,7 +143,7 @@ export default function Home() {
           <h2>先看项目，<br />再看研究和实习。</h2>
           <p>从产品与 AI 应用交付，到数据研究和真实内容现场。点击目录直接进入对应章节。</p>
         </div>
-        <nav className="directory-list" aria-label="作品集目录">
+        <nav className="directory-list" aria-label="个人简历网站目录">
           {directoryItems.map((item) => (
             <a href={item.href} key={item.index}>
               <span>{item.index}</span><strong>{item.title}</strong><p>{item.detail}</p><i>↓</i>
@@ -197,8 +184,8 @@ export default function Home() {
       <section id="research" className="research">
         <div className="section-shell research-intro" data-reveal><span className="section-index">02 / DATA RESEARCH</span><div><h2>哪些购买前行为，真的能提示用户有购买意向？</h2><p>我用淘宝行为日志做了一次可解释的购买预测研究。重点是找出有效信号，再把结果翻译成高、中、低意向用户的运营动作。研究结论可用于辅助人群分层、安排触达优先级，并为优惠和内容策略提供依据。</p></div></div>
         <div className="section-shell research-pipeline" data-reveal><div><span>01</span><b>行为日志</b><p>浏览、收藏、加购、购买</p></div><i>→</i><div><span>02</span><b>用户特征</b><p>加购数、品类多样性等</p></div><i>→</i><div><span>03</span><b>逻辑回归</b><p>预测并解释购买概率</p></div><i>→</i><div><span>04</span><b>分层动作</b><p>按意向匹配不同触达</p></div></div>
-        <div className="section-shell research-visual" data-reveal><div className="research-copy"><span>MODEL PERFORMANCE</span><h3>模型能识别购买倾向，也保留了需要继续改进的边界。</h3><p>8477 名平衡样本中，测试集为 1696。Python 模型 AUC 为 0.7602，准确率 67.98%、精确率 74%、召回率 60%。未购买用户识别仍偏弱，因此结果适合辅助分层，不适合自动做最终判断。</p></div><figure><img src="/assets/research/research-performance.png" alt="购买意图模型表现与关键特征图" /><figcaption>模型表现与关键变量 · 按论文数据重绘</figcaption></figure></div>
-        <div className="section-shell research-visual research-visual-reverse" data-reveal><div className="research-copy"><span>ACTIONABLE SEGMENTATION</span><h3>加购次数和品类多样性，转成三类可执行人群。</h3><p>加购每增加 1 次，购买优势比约增加 5.6%；浏览品类每增加 1 类，约增加 1.3%。据此把用户分为高、中、低意向，并匹配不同的提醒、优惠和内容触达。</p></div><figure><img src="/assets/research/research-segmentation.png" alt="高中低购买意向用户分层策略图" /><figcaption>用户意向分层与运营动作 · 按论文结论重绘</figcaption></figure></div>
+        <div className="section-shell research-visual" data-reveal><div className="research-copy"><span>MODEL PERFORMANCE</span><h3>模型能识别购买倾向，也保留了需要继续改进的边界。</h3><p>8477 名平衡样本中，测试集为 1696。Python 模型 AUC 为 0.7602，准确率 67.98%、精确率 74%、召回率 60%。未购买用户识别仍偏弱，因此结果适合辅助分层，不适合自动做最终判断。</p></div><figure><img src="/assets/research/research-performance.png" alt="购买意图模型表现与关键特征图" loading="lazy" decoding="async" /><figcaption>模型表现与关键变量 · 按论文数据重绘</figcaption></figure></div>
+        <div className="section-shell research-visual research-visual-reverse" data-reveal><div className="research-copy"><span>ACTIONABLE SEGMENTATION</span><h3>加购次数和品类多样性，转成三类可执行人群。</h3><p>加购每增加 1 次，购买优势比约增加 5.6%；浏览品类每增加 1 类，约增加 1.3%。据此把用户分为高、中、低意向，并匹配不同的提醒、优惠和内容触达。</p></div><figure><img src="/assets/research/research-segmentation.png" alt="高中低购买意向用户分层策略图" loading="lazy" decoding="async" /><figcaption>用户意向分层与运营动作 · 按论文结论重绘</figcaption></figure></div>
       </section>
 
       <section id="experience" className="experience section-shell">
@@ -209,7 +196,7 @@ export default function Home() {
       </section>
 
       <section id="about" className="about section-shell" data-reveal>
-        <figure className="about-photo"><div><img src="/assets/profile/profile-01.jpg" alt="Shay 的生活照" /></div><figcaption>OFF DUTY / STILL CURIOUS</figcaption></figure>
+        <figure className="about-photo"><div><img src="/assets/profile/profile-01.webp" alt="Shay 的生活照" loading="lazy" decoding="async" /></div><figcaption>OFF DUTY / STILL CURIOUS</figcaption></figure>
         <div className="about-copy"><span className="section-index">04 / ABOUT SHAY</span><h2>懂电商业务，<br />也能把 AI 做成可用、可验证的解决方案。</h2><p>我从用户需求、商家经营问题和交付目标出发，结合数据分析、AI 工作流与前端体验，把评论洞察、内容增长和业务流程做成清楚的工具与演示。正在寻找电商运营、AI 产品运营或 AI 应用交付方向的机会。</p><div className="skill-cloud"><span>电商业务</span><span>用户洞察</span><span>数据分析</span><span>AI Workflow</span><span>React</span><span>TypeScript</span><span>Content Ops</span></div></div>
       </section>
 

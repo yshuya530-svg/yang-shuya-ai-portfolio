@@ -29,7 +29,7 @@ export default function AccordionGallery({ items, tone = "blue" }: { items: Acco
                 aria-expanded={expanded}
               >
                 <span className="accordion-gallery__index">{String(index + 1).padStart(2, "0")}</span>
-                <span className="accordion-gallery__media"><img src={item.image} alt={item.alt} loading="lazy" draggable="false" /></span>
+                <span className="accordion-gallery__media"><img src={item.image} alt={item.alt} loading="lazy" decoding="async" draggable="false" /></span>
                 <span className="accordion-gallery__caption"><b>{item.caption}</b></span>
               </button>
             );
