@@ -189,7 +189,7 @@ export default function Home() {
         <div className="section-shell project-divider project-divider-spaced" data-reveal><span>PROJECT 03</span><strong>自媒体内容与增长实验</strong><p>教程内容、爆款验证与账号增长</p></div>
 
         <div id="content-project" className="content-cases section-shell" data-reveal>
-          <article className="content-card content-card-blue"><span className="card-label">产品衍生内容 / 03A</span><h3>帮助缺少前端经验的用户，<br />复用 AI 界面美化方法。</h3><p>面向想优化智能体界面、但不知道如何落地的用户，把改造过程拆成可跟做的步骤，并用收藏与评论检查教程是否清楚。</p><div className="content-metrics"><div><strong>1万</strong><span>总获赞与收藏</span></div><div><strong>50%</strong><span>帖子赞藏下载量破千</span></div><div><strong>破万</strong><span>单篇最高浏览量</span></div></div><AccordionGallery items={agentXhsShots} tone="blue" /></article>
+          <article className="content-card content-card-blue"><span className="card-label">产品衍生内容 / 03A</span><h3>AI 界面美化的复用方法：<br />拆成可跟做的步骤，<br />再用用户反馈验证。</h3><p>面向想优化智能体界面、但不知道如何落地的用户，把改造过程拆成可跟做的步骤，并用收藏与评论检查教程是否清楚。</p><div className="content-metrics"><div><strong>1万</strong><span>总获赞与收藏</span></div><div><strong>50%</strong><span>帖子赞藏下载量破千</span></div><div><strong>破万</strong><span>单篇最高浏览量</span></div></div><AccordionGallery items={agentXhsShots} tone="blue" /></article>
           <article className="content-card content-card-coral"><span className="card-label">独立增长实验 / 03B</span><h3>一个月从 0 到 1800+ 粉丝：<br />用连续选题与数据复盘验证爆款方向。</h3><p>面向情感与成长内容用户，持续测试选题、标题和内容结构，再根据曝光、互动、主页访问与涨粉曲线调整下一轮方向。</p><div className="content-metrics"><div><strong>1806</strong><span>总粉丝</span></div><div><strong>5.0万</strong><span>获赞与收藏</span></div><div><strong>93.7%</strong><span>活跃粉丝占比</span></div></div><AccordionGallery items={growthShots} tone="orange" /></article>
         </div>
       </section>

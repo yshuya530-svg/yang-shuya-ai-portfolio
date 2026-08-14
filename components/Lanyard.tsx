@@ -1,5 +1,5 @@
 "use client";
-/* eslint-disable react/no-unknown-property, @typescript-eslint/no-explicit-any, react-hooks/immutability */
+/* eslint-disable react/no-unknown-property, @typescript-eslint/no-explicit-any, react-hooks/immutability, @next/next/no-img-element */
 
 import { Environment, Lightformer, useGLTF, useTexture } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
@@ -12,7 +12,7 @@ import {
   useSphericalJoint,
 } from "@react-three/rapier";
 import { MeshLineGeometry, MeshLineMaterial } from "meshline";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
 import "./Lanyard.css";
 
@@ -30,6 +30,8 @@ const BACK_UV_RECT = { x: 0.5, y: 0, w: 0.5, h: 0.757 };
 export default function Lanyard({ frontImage, backImage, onActivate }: Props) {
   const [mobile, setMobile] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [ready, setReady] = useState(false);
+  const markReady = useCallback(() => setReady(true), []);
 
   useEffect(() => {
     const update = () => setMobile(window.innerWidth < 720);
@@ -44,30 +46,34 @@ export default function Lanyard({ frontImage, backImage, onActivate }: Props) {
     };
   }, []);
 
-  if (!mounted) return <div className="lanyard-wrapper lanyard-loading" aria-hidden="true" />;
-
   return (
-    <div className="lanyard-wrapper" aria-label="可拖动的 Shay 照片吊牌">
-      <Canvas
-        camera={{ position: [0, 0, mobile ? 13 : 11], fov: 25 }}
-        dpr={mobile ? 2 : [1, 1.7]}
-        flat
-        gl={{ alpha: true, antialias: true, toneMapping: THREE.NoToneMapping }}
-        onCreated={({ gl }) => {
-          gl.outputColorSpace = THREE.SRGBColorSpace;
-          gl.setClearColor(new THREE.Color(0x000000), 0);
-        }}
-      >
-        <ambientLight intensity={Math.PI} />
-        <Physics gravity={[0, -38, 0]} timeStep={mobile ? 1 / 30 : 1 / 60}>
-          <Band mobile={mobile} frontImage={frontImage} backImage={backImage} onActivate={onActivate} />
-        </Physics>
-        <Environment blur={0.78}>
-          <Lightformer intensity={2.5} color="white" position={[0, -1, 5]} rotation={[0, 0, Math.PI / 3]} scale={[100, .1, 1]} />
-          <Lightformer intensity={3} color="#eee5da" position={[-1, -1, 1]} rotation={[0, 0, Math.PI / 3]} scale={[100, .1, 1]} />
-          <Lightformer intensity={7} color="#d16a50" position={[-10, 0, 14]} rotation={[0, Math.PI / 2, Math.PI / 3]} scale={[100, 10, 1]} />
-        </Environment>
-      </Canvas>
+    <div className={`lanyard-wrapper${ready ? " is-ready" : ""}`} aria-label="可拖动的 Shay 照片吊牌">
+      <div className="lanyard-poster" aria-hidden="true">
+        <span className="lanyard-poster__strap" />
+        <span className="lanyard-poster__card"><img src={frontImage} alt="" loading="eager" fetchPriority="high" /></span>
+      </div>
+      {mounted && (
+        <Canvas
+          camera={{ position: [0, 0, mobile ? 13 : 11], fov: 25 }}
+          dpr={mobile ? 2 : [1, 1.7]}
+          flat
+          gl={{ alpha: true, antialias: true, toneMapping: THREE.NoToneMapping }}
+          onCreated={({ gl }) => {
+            gl.outputColorSpace = THREE.SRGBColorSpace;
+            gl.setClearColor(new THREE.Color(0x000000), 0);
+          }}
+        >
+          <ambientLight intensity={Math.PI} />
+          <Physics gravity={[0, -38, 0]} timeStep={mobile ? 1 / 30 : 1 / 60}>
+            <Band mobile={mobile} frontImage={frontImage} backImage={backImage} onActivate={onActivate} onReady={markReady} />
+          </Physics>
+          <Environment blur={0.78}>
+            <Lightformer intensity={2.5} color="white" position={[0, -1, 5]} rotation={[0, 0, Math.PI / 3]} scale={[100, .1, 1]} />
+            <Lightformer intensity={3} color="#eee5da" position={[-1, -1, 1]} rotation={[0, 0, Math.PI / 3]} scale={[100, .1, 1]} />
+            <Lightformer intensity={7} color="#d16a50" position={[-10, 0, 14]} rotation={[0, Math.PI / 2, Math.PI / 3]} scale={[100, 10, 1]} />
+          </Environment>
+        </Canvas>
+      )}
       <p className="lanyard-hint"><b>拖动吊牌</b><span>松手直达项目 ↓</span></p>
     </div>
   );
@@ -78,9 +84,10 @@ type BandProps = {
   frontImage: string;
   backImage?: string;
   onActivate?: () => void;
+  onReady: () => void;
 };
 
-function Band({ mobile, frontImage, backImage, onActivate }: BandProps) {
+function Band({ mobile, frontImage, backImage, onActivate, onReady }: BandProps) {
   const band = useRef<THREE.Mesh>(null);
   const fixed = useRef<any>(null);
   const joint1 = useRef<any>(null);
@@ -153,6 +160,10 @@ function Band({ mobile, frontImage, backImage, onActivate }: BandProps) {
     texture.needsUpdate = true;
     return texture;
   }, [backImage, backTexture.image, frontImage, frontTexture.image, gltf.materials.base.map]);
+
+  useEffect(() => {
+    onReady();
+  }, [cardMap, onReady]);
 
   const [dragged, setDragged] = useState<THREE.Vector3 | false>(false);
   const [hovered, setHovered] = useState(false);
